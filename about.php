@@ -3,41 +3,37 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Child Ville - Preschool</title>
+    <title>Child Ville - Preschool </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="asset/img/Logo.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@400;500;600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="asset/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="asset/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="asset/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="asset/css/style.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
-        <div id="spinner"
-            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -47,7 +43,7 @@
 
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-            <a href="index.html" class="navbar-brand">
+            <a href="index.php" class="navbar-brand">
                 <img src="img/Logo.png" alt="" style="width: 50%;">
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -55,15 +51,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About Us</a>
-                    <a href="photobook.html" class="nav-item nav-link">Photobook</a>
-                    <a href="testimonal.html" class="nav-item nav-link">Testimonial</a>
-                    <a href="Branches.html" class="nav-item nav-link">Branches</a>
-                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                    <a href="index.php" class="nav-item nav-link active">Home</a>
+                    <a href="about.php" class="nav-item nav-link">About Us</a>
+                    <a href="photobook.php" class="nav-item nav-link">Photobook</a>
+                    <a href="testimonal.php" class="nav-item nav-link">Testimonial</a>
+                    <a href="Branches.php" class="nav-item nav-link">Branches</a>
+                    <a href="contact.php" class="nav-item nav-link">Contact Us</a>
                 </div>
-                <a href="Staff-login.html" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Staff Login<i
-                        class="fa fa-arrow-right ms-3"></i></a>
+                <a href="Staff-login.php" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Staff Login<i class="fa fa-arrow-right ms-3"></i></a>
             </div>
         </nav>
         <!-- Navbar End -->
@@ -110,13 +105,13 @@
                     <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <img class="img-fluid w-75 rounded-circle bg-light p-3" src="img/about-1.jpg" alt="">
+                                <img class="img-fluid w-75 rounded-circle bg-light p-3" src="asset/img/about-1.jpg" alt="">
                             </div>
                             <div class="col-6 text-start" style="margin-top: -150px;">
-                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/about-2.jpg" alt="">
+                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="asset/img/about-2.jpg" alt="">
                             </div>
                             <div class="col-6 text-end" style="margin-top: -150px;">
-                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/about-3.jpg" alt="">
+                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="asset/img/about-3.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -132,13 +127,13 @@
                     <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <img class="img-fluid w-75 rounded-circle bg-light p-3" src="img/about-1.jpg" alt="">
+                                <img class="img-fluid w-75 rounded-circle bg-light p-3" src="asset/img/about-1.jpg" alt="">
                             </div>
                             <div class="col-6 text-start" style="margin-top: -150px;">
-                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/about-2.jpg" alt="">
+                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="asset/img/about-2.jpg" alt="">
                             </div>
                             <div class="col-6 text-end" style="margin-top: -150px;">
-                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/about-3.jpg" alt="">
+                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="asset/img/about-3.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -187,22 +182,22 @@
                         <h3 class="text-white mb-4">Photo Gallery</h3>
                         <div class="row g-2 pt-2">
                             <div class="col-4">
-                                <img class="img-fluid rounded bg-light p-1" src="img/unnamed (3).jpg" alt="">
+                                <img class="img-fluid rounded bg-light p-1" src="asset/img/unnamed (3).jpg" alt="">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid rounded bg-light p-1" src="img/unnamed (4).jpg" alt="">
+                                <img class="img-fluid rounded bg-light p-1" src="asset/img/unnamed (4).jpg" alt="">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid rounded bg-light p-1" src="img/unnamed (5).jpg" alt="">
+                                <img class="img-fluid rounded bg-light p-1" src="asset/img/unnamed (5).jpg" alt="">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid rounded bg-light p-1" src="img/unnamed (6).jpg" alt="">
+                                <img class="img-fluid rounded bg-light p-1" src="asset/img/unnamed (6).jpg" alt="">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid rounded bg-light p-1" src="img/unnamed (7).jpg" alt="">
+                                <img class="img-fluid rounded bg-light p-1" src="asset/img/unnamed (7).jpg" alt="">
                             </div>
                             <div class="col-4">
-                                <img class="img-fluid rounded bg-light p-1" src="img/unnamed (9).jpg" alt="">
+                                <img class="img-fluid rounded bg-light p-1" src="asset/img/unnamed (9).jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -210,10 +205,8 @@
                         <h3 class="text-white mb-4">Newsletter</h3>
                         <p>Subscribe to Our Newsletter and Learn More</p>
                         <div class="position-relative mx-auto" style="max-width: 400px;">
-                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text"
-                                placeholder="Your email">
-                            <button type="button"
-                                class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
                         </div>
                     </div>
                 </div>
@@ -230,13 +223,12 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="asset/lib/wow/wow.min.js"></script>
+    <script src="asset/lib/easing/easing.min.js"></script>
+    <script src="asset/lib/waypoints/waypoints.min.js"></script>
+    <script src="asset/lib/owlcarousel/owl.carousel.min.js"></script>
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="asset/js/main.js"></script>
 </body>
 
 </html>
