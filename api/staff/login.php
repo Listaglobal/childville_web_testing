@@ -60,7 +60,7 @@ if (getenv('REQUEST_METHOD') === 'POST') {
         $token = $api_status_code_class_call->getTokenToSendAPI($userPubkey);
 
         $maindata = [
-            "api_key" => $token,
+            "token" => $token,
         ];
         $text = $api_response_class_call::$loginSuccessful;
         $api_status_code_class_call->respondOK($maindata, $text);

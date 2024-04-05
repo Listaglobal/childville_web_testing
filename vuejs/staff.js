@@ -324,7 +324,7 @@ let app = Vue.createApp({
         },
         logout() {
             window.localStorage.removeItem("token");
-            window.location = this.baseUrl + "/admin/login.php";
+            window.location = this.baseUrl + "staff-login.php";
         },
         async nextPage() {
             this.currentPage = parseInt(this.currentPage) + 1;
@@ -557,7 +557,7 @@ let app = Vue.createApp({
         },
         // Account
         async getAdminDetails() {
-            const url = `account/getAdminDetails.php`;
+            const url = `getAdminDetails.php`;
             let headers = {
                 "Content-type": "application/json",
                 "Authorization": `Bearer ${this.token}`
@@ -7354,13 +7354,14 @@ let app = Vue.createApp({
     async beforeMount() {
         // this.getImages();
         this.pathname = window.location.href;
-        if (!webPage.includes("admin/login.php") && !webPage.includes("login")) {
-            window.localStorage.setItem("LightNGCurrentPage", webPage);
+        if (!webPage.includes("staff-login.php") && !webPage.includes("staff-login")) {
+            window.localStorage.setItem("ChildVilleCurrentPage", webPage);
             this.loading = true;
             this.getToken();
+            console.log("Token", this.token);
             this.getAdminDetails();
             if (!this.token) {
-                window.location = `${this.baseUrl}admin/login.php`;
+                window.location = `${this.baseUrl}staff-login.php`;
             }
         }
 

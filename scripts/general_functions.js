@@ -74,7 +74,7 @@ class GeneralFunction {
                     if ( typeof errorCallBack === 'function' ) {
                         errorCallBack(errorMsg);
                     }
-                    window.localStorage.setItem("authToken", "");
+                    window.localStorage.setItem("token", "");
                     this.authToken = null;
                     if (nav == 1) {
                         window.location = this.logoutUrl;
@@ -153,7 +153,7 @@ class GeneralFunction {
                     if ( typeof errorCallBack === 'function' ) {
                         errorCallBack(errorMsg);
                     }
-                    window.localStorage.setItem("authToken", "");
+                    window.localStorage.setItem("token", "");
                     this.authToken = null;
                     if (nav == 1) {
                         window.location = this.logoutUrl;

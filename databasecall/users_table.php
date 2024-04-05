@@ -97,6 +97,24 @@ class Users_Table extends Config\DB_Connect
         }
         return $error;
     }
+
+    public static  function getIdentity($userIdentity, $data = "*")
+    {
+        $connect = static::getDB();
+        $alldata = [];
+        $sqlQuery = "SELECT $data FROM users where email  = ? OR user_id = ?";
+        $stmt = $connect->prepare($sqlQuery);
+        $stmt->bind_param("ss", $userIdentity, $userIdentity);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+
+            return $row;
+        }
+        return $alldata;
+    }
     public static function registerUser($email, $password, $firstname, $lastname, $phoneno, $refferedcode)
     {
         // get user that referred this new user by the referred code
