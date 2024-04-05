@@ -23,22 +23,22 @@ class Constants
      * Database name
      * @var string
      */
-    const DB_NAME = 'light_ng';
-    const LIVE_DB_NAME = 'lightdotng_version1.0';
+    const DB_NAME = 'childville';
+    const LIVE_DB_NAME = '';
 
     /**
      * Database user
      * @var string
      */
     const DB_USER = 'root';
-    const LIVE_DB_USER = 'lightdotng_root_user';
+    const LIVE_DB_USER = '';
 
     /**
      * Database password
      * @var string
      */
     const DB_PASSWORD = '';
-    const LIVE_DB_PASSWORD = 'Zebrat1ng...';
+    const LIVE_DB_PASSWORD = '';
 
 
 
@@ -48,10 +48,10 @@ class Constants
      */
     const SHOW_ERRORS = true;
     // App base url, main ho,e page link
-    const BASE_URL = "http://localhost/lightng/";
-    const LIVE_BASE_URL = "https://light.ng/";
-    const APP_NAME = "LightNG";
-    const APP_SHORT_KEY = "LNG";
+    const BASE_URL = "http://localhost/childville_web/";
+    const LIVE_BASE_URL = "https://childville.com/";
+    const APP_NAME = "Childville - Pre-School";
+    const APP_SHORT_KEY = "CHILDVILLE";
     const CURRENT_VERSION = "1.0"; // where all assets is
     const APP_BASE_URL = self::LIVE_OR_LOCAL == 0 ? self::BASE_URL : self::LIVE_BASE_URL;
     const APP_ASSET_PATH = self::APP_BASE_URL . "assets/images/";

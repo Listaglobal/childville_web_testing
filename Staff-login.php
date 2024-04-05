@@ -31,7 +31,7 @@
 </head>
 
 <body>
-    <div class="mt-5">
+    <div id="staff" v-cloak class="mt-5">
         <div class="container-xxl bg-white p-0">
             <!-- Spinner Start -->
             <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -66,7 +66,7 @@
                                             <h5 class="text-primary">Access Your Profile</h5>
                                         </div>
                                         <div class="p-2 mt-4">
-                                            <form @submit.prevent="adminLogin">
+                                            <form @submit.prevent="staffLogin">
                                                 <div class="mb-3">
                                                     <label for="username" class="form-label">Email</label>
                                                     <input type="email" class="form-control" v-model="email" id="email" placeholder="Enter Your Email">
@@ -102,12 +102,18 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
     <script src="asset/lib/wow/wow.min.js"></script>
     <script src="asset/lib/easing/easing.min.js"></script>
     <script src="asset/lib/waypoints/waypoints.min.js"></script>
     <script src="asset/lib/owlcarousel/owl.carousel.min.js"></script>
 
     <script src="asset/js/main.js"></script>
+    <script src="scripts/general_functions.js"></script>
+    <script src="vuejs/staff.js"></script>
 </body>
 
 </html>
