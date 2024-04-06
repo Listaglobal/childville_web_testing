@@ -145,7 +145,6 @@
                             <p class="text-gray mb-0 ">Call Sarah Graves</p>
                         </div>
                     </div>
-                    <!-- To do section tab ends -->
                     <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
                         <div class="d-flex align-items-center justify-content-between border-bottom">
                             <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
@@ -223,126 +222,57 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="row">
-                        <div class="col-sm-12">
-                            <div class="home-tab">
-
-                                <div class="row flex-grow">
-                                    <div class="col-12 grid-margin stretch-card">
-                                        <div class="card card-rounded">
-                                            <div class="card-body">
-                                                <div class="d-sm-flex justify-content-between align-items-start">
-                                                    <div>
-                                                        <h4 class="card-title card-title-dash">Child Ville Pupils</h4>
-                                                        <p class="card-subtitle card-subtitle-dash">You have 3 Pupils</p>
-                                                    </div>
-                                                    <div>
-                                                        <button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button"><i class="mdi mdi-account-plus"></i>Add new Pupils</button>
-                                                    </div>
-                                                </div>
-                                                <div class="table-responsive  mt-1">
-                                                    <table class="table select-table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>PuPils Name</th>
-                                                                <th>Sex</th>
-                                                                <th>Parents Contact</th>
-                                                                <th>Status</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex ">
-                                                                        <img src="assets/images/faces/face1.jpg" alt="">
-                                                                        <div>
-                                                                            <h6>Brandon Washington</h6>
-                                                                            <p></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <h6>Female</h6>
-                                                                </td>
-                                                                <td>
-                                                                    <div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p class="text-success">+23729474</p>
-                                                                        </div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p>Washington James</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="badge badge-opacity-success">Active</div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex ">
-                                                                        <img src="assets/images/faces/face1.jpg" alt="">
-                                                                        <div>
-                                                                            <h6>Brandon Washington</h6>
-                                                                            <p></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <h6>Female</h6>
-                                                                </td>
-                                                                <td>
-                                                                    <div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p class="text-success">+23729474</p>
-                                                                        </div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p>Washington James</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="badge badge-opacity-success">Active</div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex ">
-                                                                        <img src="assets/images/faces/face1.jpg" alt="">
-                                                                        <div>
-                                                                            <h6>Brandon Washington</h6>
-                                                                            <p></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <h6>Female</h6>
-                                                                </td>
-                                                                <td>
-                                                                    <div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p class="text-success">+23729474</p>
-                                                                        </div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p>Washington James</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="badge badge-opacity-success">Active</div>
-                                                                </td>
-                                                            </tr>
-
-
-
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Check Out Event </h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name of Event</th>
+                                                    <th>Date</th>
+                                                    <th>Time</th>
+                                                    <th>Location</th>
+                                                    <th>Status</th>
+                                                    <th> </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td> Change of Borad of Directors </td>
+                                                    <td>May 15, 2015 </td>
+                                                    <td>16:30 </td>
+                                                    <td>Main Hall</td>
+                                                    <td>
+                                                        <div class="badge badge-opacity-warning me-3">Due tomorrow</div>
+                                                    </td>
+                                                    <td> John Smith </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Change of Borad of Directors </td>
+                                                    <td>May 15, 2015 </td>
+                                                    <td>16:30 </td>
+                                                    <td>Main Hall</td>
+                                                    <td>
+                                                        <div class="badge badge-opacity-success me-3">Done</div>
+                                                    </td>
+                                                    <td> John Smith </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> Change of Borad of Directors </td>
+                                                    <td>May 15, 2015</td>
+                                                    <td>16:30 </td>
+                                                    <td>Main Hall</td>
+                                                    <td>
+                                                        <div class="badge badge-danger me-3">Cancelled</div>
+                                                    </td>
+                                                    <td> John Smith </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
