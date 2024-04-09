@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Child Ville - Preschool </title>
+    <title>Admin Child Ville Login </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="asset/img/Logo2.png" rel="icon">
+    <link href="asset/img/Logo.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,13 +21,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="asset/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="asset/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../asset/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="../asset/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="asset/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../asset/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="asset/css/style.css" rel="stylesheet">
+    <link href="../asset/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -49,7 +51,7 @@
                                 <div class="text-center mt-sm-5 mb-4 text-white-50">
                                     <div>
                                         <a href="index.php" class="d-inline-block auth-logo">
-                                            <img src="asset/img/Logo2.png" alt="" height="90" width="90">
+                                            <img src="asset/img/Logo.png" alt="" height="80" width="80">
                                         </a>
                                     </div>
                                 </div>
@@ -63,7 +65,7 @@
                                     <div class="card-body p-4">
                                         <div class="text-center mt-2">
                                             <h5 class="text-primary">Welcome Back !</h5>
-                                            <h5 class="text-primary">Access your profile as a child Ville Staff</h5>
+                                            <h5 class="text-primary">Access Your Profile</h5>
                                         </div>
                                         <div class="p-2 mt-4">
                                             <form @submit.prevent="staffLogin">

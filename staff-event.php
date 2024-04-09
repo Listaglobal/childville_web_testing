@@ -2,26 +2,7 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>STaff Potal || Chilld Ville - Pre-School </title>
-    <!-- plugins:css -->
-    <link rel="stylesheet" href="assets/vendors/feather/feather.css">
-    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="assets/vendors/ti-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/vendors/typicons/typicons.css">
-    <link rel="stylesheet" href="assets/vendors/simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-    <link rel="stylesheet" type="text/css" href="assets/js/select.dataTables.min.css">
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="assets/css/vertical-layout-light/style.css">
-    <!-- endinject -->
-    <link rel="shortcut icon" href="asset/img/Logo.png" />
+    <?php include 'includes/staff-header-link.php' ?>
 </head>
 <style>
     [v-cloak] {
@@ -247,7 +228,7 @@
                                                     <td>
                                                         <div class="badge badge-opacity-warning me-3">Due tomorrow</div>
                                                     </td>
-                                                    <td> John Smith </td>
+                                                    <!-- <td> John Smith </td> -->
                                                 </tr>
                                                 <tr>
                                                     <td> Change of Borad of Directors </td>
@@ -257,7 +238,7 @@
                                                     <td>
                                                         <div class="badge badge-opacity-success me-3">Done</div>
                                                     </td>
-                                                    <td> John Smith </td>
+                                                    <!-- <td> John Smith </td> -->
                                                 </tr>
                                                 <tr>
                                                     <td> Change of Borad of Directors </td>
@@ -267,7 +248,7 @@
                                                     <td>
                                                         <div class="badge badge-danger me-3">Cancelled</div>
                                                     </td>
-                                                    <td> John Smith </td>
+                                                    <!-- <td> John Smith </td> -->
                                                 </tr>
                                             </tbody>
                                         </table>

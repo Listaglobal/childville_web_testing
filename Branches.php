@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="asset/img/Logo.png" rel="icon">
+    <link href="asset/img/Logo2.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +44,7 @@
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
             <a href="index.php" class="navbar-brand">
-                <img src="img/Logo.png" alt="" style="width: 50%;">
+                <img src="asset/img/Logo2.png" alt="" style="width: 20%;">
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -58,7 +58,7 @@
                     <a href="Branches.php" class="nav-item nav-link">Branches</a>
                     <a href="contact.php" class="nav-item nav-link">Contact Us</a>
                 </div>
-                <a href="Staff-login.php" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Staff Login<i class="fa fa-arrow-right ms-3"></i></a>
+                <a href="#" class="btn btn-primary rounded-pill px-3 d-none d-lg-block" id="create-btn" data-bs-toggle="modal" data-bs-target="#sortModal">Login<i class="fa fa-arrow-right ms-3"></i></a>
             </div>
         </nav>
         <!-- Navbar End -->
@@ -255,8 +255,22 @@
         <!-- Footer End -->
 
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+        <div class="modal fade" id="sortModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-light p-3">
+                        <h5 class="modal-title" id="exampleModalLabel"> Login As</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
+                    </div>
+                    <form class="tablelist-form" autocomplete="off">
+                        <div class="modal-body align-items-center">
+                            <a href="./Staff-login.php" target="_blank" rel="noopener noreferrer"><button type="button" class="btn btn-outline-primary me-5">Child Ville Staff Login</button></a>
+                            <a href="./admin/child-login.php" target="_blank" rel="noopener noreferrer"><button type="button" class="btn btn-outline-secondary me-5">Child Ville Admin Login</button></a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- JavaScript Libraries -->

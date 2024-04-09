@@ -9,14 +9,12 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="asset/img/Logo.png" rel="icon">
+    <link href="asset/img/Logo2.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@400;500;600&family=Lobster+Two:wght@700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@400;500;600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -35,8 +33,7 @@
 <body>
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
-        <div id="spinner"
-            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -47,23 +44,21 @@
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
             <a href="index.php" class="navbar-brand">
-                <img src="asset/img/Logo.png" alt="" style="width: 50%;">
+                <img src="asset/img/Logo2.png" alt="" style="width: 20%;">
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav mx-auto">
+                <div class="navbar-nav mx-auto ">
                     <a href="index.php" class="nav-item nav-link active">Home</a>
                     <a href="about.php" class="nav-item nav-link">About Us</a>
                     <a href="photobook.php" class="nav-item nav-link">Photobook</a>
                     <a href="testimonal.php" class="nav-item nav-link">Testimonial</a>
                     <a href="Branches.php" class="nav-item nav-link">Branches</a>
-
                     <a href="contact.php" class="nav-item nav-link">Contact Us</a>
                 </div>
-                <a href="Staff-login.php" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Staff Login<i
-                        class="fa fa-arrow-right ms-3"></i></a>
+                <a href="#" class="btn btn-primary rounded-pill px-3 d-none d-lg-block" id="create-btn" data-bs-toggle="modal" data-bs-target="#sortModal">Login<i class="fa fa-arrow-right ms-3"></i></a>
             </div>
         </nav>
         <!-- Navbar End -->
@@ -74,8 +69,7 @@
             <div class="owl-carousel header-carousel position-relative">
                 <div class="owl-carousel-item position-relative">
                     <img class="img-fluid" src="asset/img/unnamed (2).jpg" alt="">
-                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
-                        style="background: rgba(0, 0, 0, .2);">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .2);">
                         <div class="container">
                             <div class="row justify-content-start">
                                 <div class="col-10 col-lg-8 ms-5">
@@ -85,8 +79,7 @@
                                         face
                                         as he engages with colorful preschool toys, expressing pure joy and curiosity.
                                     </p>
-                                    <a href="about.php"
-                                        class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Learn
+                                    <a href="about.php" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Learn
                                         More</a>
                                 </div>
                             </div>
@@ -95,8 +88,7 @@
                 </div>
                 <div class="owl-carousel-item position-relative">
                     <img class="img-fluid" src="asset/img/unnamed (1).jpg" alt="">
-                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
-                        style="background: rgba(0, 0, 0, .2);">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .2);">
                         <div class="container">
                             <div class="row justify-content-start">
                                 <div class="col-10 col-lg-8 ms-5">
@@ -106,8 +98,7 @@
                                         skills at preschool, confidently crafting letters and drawings with enthusiasm
                                         and
                                         precision.</p>
-                                    <a href="about.php"
-                                        class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Learn
+                                    <a href="about.php" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Learn
                                         More</a>
 
                                 </div>
@@ -309,8 +300,7 @@
                         <p class="fs-5">Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet
                             dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
                         <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="asset/img/testimonial-1.jpg"
-                                style="width: 90px; height: 90px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="asset/img/testimonial-1.jpg" style="width: 90px; height: 90px;">
                             <div class="ps-3">
                                 <h3 class="mb-1">Client Name</h3>
                                 <span>Profession</span>
@@ -322,8 +312,7 @@
                         <p class="fs-5">Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet
                             dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
                         <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="asset/img/testimonial-2.jpg"
-                                style="width: 90px; height: 90px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="asset/img/testimonial-2.jpg" style="width: 90px; height: 90px;">
                             <div class="ps-3">
                                 <h3 class="mb-1">Client Name</h3>
                                 <span>Profession</span>
@@ -335,8 +324,7 @@
                         <p class="fs-5">Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet
                             dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
                         <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="asset/img/testimonial-3.jpg"
-                                style="width: 90px; height: 90px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="asset/img/testimonial-3.jpg" style="width: 90px; height: 90px;">
                             <div class="ps-3">
                                 <h3 class="mb-1">Client Name</h3>
                                 <span>Profession</span>
@@ -404,37 +392,31 @@
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control border-0" id="gname"
-                                                    placeholder="Gurdian Name">
+                                                <input type="text" class="form-control border-0" id="gname" placeholder="Gurdian Name">
                                                 <label for="gname">Gurdian Name</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input type="email" class="form-control border-0" id="gmail"
-                                                    placeholder="Gurdian Email">
+                                                <input type="email" class="form-control border-0" id="gmail" placeholder="Gurdian Email">
                                                 <label for="gmail">Gurdian Email</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control border-0" id="cname"
-                                                    placeholder="Child Name">
+                                                <input type="text" class="form-control border-0" id="cname" placeholder="Child Name">
                                                 <label for="cname">Child Name</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control border-0" id="cage"
-                                                    placeholder="Child Age">
+                                                <input type="text" class="form-control border-0" id="cage" placeholder="Child Age">
                                                 <label for="cage">Child Age</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-floating">
-                                                <textarea class="form-control border-0"
-                                                    placeholder="Leave a message here" id="message"
-                                                    style="height: 100px"></textarea>
+                                                <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
                                                 <label for="message">Message</label>
                                             </div>
                                         </div>
@@ -447,8 +429,7 @@
                         </div>
                         <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
                             <div class="position-relative h-100">
-                                <img class="position-absolute w-100 h-100 rounded" src="asset/img/appointment.jpg"
-                                    style="object-fit: cover;">
+                                <img class="position-absolute w-100 h-100 rounded" src="asset/img/appointment.jpg" style="object-fit: cover;">
                             </div>
                         </div>
                     </div>
@@ -501,10 +482,8 @@
                         <h3 class="text-white mb-4">Newsletter</h3>
                         <p>Subscribe to Our Newsletter and Learn More</p>
                         <div class="position-relative mx-auto" style="max-width: 400px;">
-                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text"
-                                placeholder="Your email">
-                            <button type="button"
-                                class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
                         </div>
                     </div>
                 </div>
@@ -513,9 +492,22 @@
         </div>
         <!-- Footer End -->
 
-
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+        <div class="modal fade" id="sortModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-light p-3">
+                        <h5 class="modal-title" id="exampleModalLabel"> Login As</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
+                    </div>
+                    <form class="tablelist-form" autocomplete="off">
+                        <div class="modal-body align-items-center">
+                            <a href="./Staff-login.php" target="_blank" rel="noopener noreferrer"><button type="button" class="btn btn-outline-primary me-5">ChildVille Staff Login</button></a>
+                            <a href="./admin/child-login.php" target="_blank" rel="noopener noreferrer"><button type="button" class="btn btn-outline-secondary me-5">Childville Admin Login</button></a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- JavaScript Libraries -->
