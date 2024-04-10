@@ -333,51 +333,51 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="staff-profile.php">
+                        <a class="nav-link" href="admin-index.php">
                             <i class="mdi mdi-grid-large menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="staff-pupil.php">
+                        <a class="nav-link" href="">
                             <i class="menu-icon mdi mdi-account-circle-outline"></i>
                             <span class="menu-title">Pupils</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="staff-request.php">
+                        <a class="nav-link" href="">
                             <i class="mdi mdi-airplane-takeoff menu-icon"></i>
                             <span class="menu-title">All Staff</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="staff-pay.php">
+                        <a class="nav-link" href="">
                             <i class="menu-icon mdi mdi-alert-octagon"></i>
                             <span class="menu-title">Pay Roll</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="staff-event.php">
+                        <a class="nav-link" href="">
                             <i class="menu-icon mdi mdi-application"></i>
                             <span class="menu-title">All Events</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="staff-performance.php">
+                        <a class="nav-link" href="">
                             <i class="menu-icon mdi mdi-arrange-send-backward"></i>
                             <span class="menu-title">Performance And Reviews </span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="staff-goal.php">
+                        <a class="nav-link" href="">
                             <i class="menu-icon mdi mdi-airballoon"></i>
                             <span class="menu-title">Staff Goals </span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="staff-request.php">
+                        <a class="nav-link" href="">
                             <i class="mdi mdi-airplane-takeoff menu-icon"></i>
                             <span class="menu-title">All Request </span>
                         </a>
