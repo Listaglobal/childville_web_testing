@@ -34,7 +34,7 @@
                                                         <h4 class="card-title card-title-dash">Request Time Off</h4>
                                                     </div>
                                                     <div>
-                                                        <button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button"><i class="mdi mdi-account-plus"></i>Send Request</button>
+                                                        <a data-bs-toggle="modal" href="#adddisco" class="btn btn-primary btn-lg text-white mb-0 me-0" type="button"><i class="mdi mdi-account-plus"></i>Send Request </a>
                                                     </div>
                                                 </div>
                                                 <div class="table-responsive  mt-1">
@@ -82,6 +82,33 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade " id="adddisco" style="padding-left: 0px;" aria-modal="true" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Request Time Off</h5>
+                    <a href="#" class="close" id='_closedisco' data-bs-dismiss="modal" aria-label="Close"><i class="mdi mdi-close"></i></a>
+                </div>
+                <div class="modal-body">
+                    <form @submit.prevent>
+                        <div class="form-group">
+                            <label class="form-label" for="email-address">Topic</label>
+                            <div class="form-control-wrap">
+                                <input type="text" v-model="name" class="form-control" id="email-address" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1" class="form-label">Reason</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                        </div>
+
+                        <div class="form-group"><button @click='addDisco' class="btn btn-lg btn-primary">Send Request</button></div>
+                    </form>
                 </div>
             </div>
         </div>

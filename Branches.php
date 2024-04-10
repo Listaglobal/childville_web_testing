@@ -265,7 +265,7 @@
                     <form class="tablelist-form" autocomplete="off">
                         <div class="modal-body align-items-center">
                             <a href="./Staff-login.php" target="_blank" rel="noopener noreferrer"><button type="button" class="btn btn-outline-primary me-5">Child Ville Staff Login</button></a>
-                            <a href="./admin/child-login.php" target="_blank" rel="noopener noreferrer"><button type="button" class="btn btn-outline-secondary">Child Ville Admin Login</button></a>
+                            <a href="./admin/admin-login.php" target="_blank" rel="noopener noreferrer"><button type="button" class="btn btn-outline-secondary">Child Ville Admin Login</button></a>
                         </div>
                     </form>
                 </div>

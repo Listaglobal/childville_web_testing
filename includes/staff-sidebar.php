@@ -30,7 +30,7 @@
             <span class="menu-title">Performance And Reviews </span>
         </a>
     </li>
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
             <i class="menu-icon mdi mdi-airballoon"></i>
             <span class="menu-title">Goals</span>
@@ -43,6 +43,12 @@
                 <li class="nav-item"> <a class="nav-link" href="">Yearly</a></li>
             </ul>
         </div>
+    </li> -->
+    <li class="nav-item">
+        <a class="nav-link" href="staff-goal.php">
+            <i class="menu-icon mdi mdi-airballoon"></i>
+            <span class="menu-title">Staff Goals </span>
+        </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="staff-request.php">

@@ -24,44 +24,39 @@
                         <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Perfomance and Review </h4>
+                                    <h4 class="card-title">Goals</h4>
                                     <div class="table-responsive">
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th>Review By</th>
                                                     <th>Date</th>
-                                                    <th>Reviews</th>
-                                                    <th>Performance Status</th>
+                                                    <th>Goals</th>
+                                                    <th> Status</th>
                                                     <th> </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>John Elton</td>
                                                     <td>May 15, 2015 </td>
-                                                    <td>Change of Borad of Directors </td>
+                                                    <td>Achieve the Set object of child Ville</td>
                                                     <td>
-                                                        <div class="badge badge-opacity-warning me-3">Avarage</div>
+                                                        <div class="badge badge-opacity-success me-3">Done</div>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>John Elton</td>
                                                     <td>May 15, 2015 </td>
-                                                    <td>Change of Borad of Directors </td>
+                                                    <td>Achieve the Set object of child Ville</td>
                                                     <td>
-                                                        <div class="badge badge-opacity-success me-3">Good</div>
+                                                        <div class="badge badge-opacity-danger me-3">Not Done</div>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>John Elton</td>
                                                     <td>May 15, 2015 </td>
-                                                    <td>Change of Borad of Directors </td>
+                                                    <td>Achieve the Set object of child Ville</td>
                                                     <td>
-                                                        <div class="badge badge-opacity-danger me-3">Bad</div>
+                                                        <div class="badge badge-opacity-success me-3">Done</div>
                                                     </td>
                                                 </tr>
-                                                
                                             </tbody>
                                         </table>
                                     </div>
