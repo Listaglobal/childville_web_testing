@@ -94,7 +94,7 @@ let app = Vue.createApp({
     data() {
         return {
             // General utilites
-            generalFunctions: new GeneralFunction({ apiPath: "admin" , logoutUrl : "admin/login.php" }),
+            generalFunctions: new GeneralFunction({ apiPath: "admin" , logoutUrl : "admin/admin-login.php" }),
             images: null,
             loading: null,
             currentPage: null,
@@ -111,7 +111,7 @@ let app = Vue.createApp({
             sortValue: "",
             discoValue: "",
             // baseUrl:'https://light.ng/',
-            baseUrl: 'http://localhost/LightNG/',
+           baseUrl: 'http://localhost/childville_web/',
             first_name: null,
             last_name: null,
             gender: null,
@@ -371,11 +371,11 @@ let app = Vue.createApp({
             this.loading = false;
         },
         async onSuccess(successText, successData) {
-            this.generalFunctions.Toastinator('success', successText);
+            this.generalFunctions.swalToast('success', successText);
         },
 
         async onError(error) {
-            this.generalFunctions.Toastinator('error', error);
+            this.generalFunctions.swalToast('error', error);
         },
 
         async callPostRequest(data, url, headers, onSuccess, canNavOn401 = 1) {
@@ -400,10 +400,10 @@ let app = Vue.createApp({
         // AUTH
         async adminLogin() {
             if (!this.email || !this.password) {
-                this.generalFunctions.Toastinator("error", "Kindly Enter all Fields")
+                this.generalFunctions.swalToast("error", "Kindly Enter all Fields")
                 return
             }
-            const url = `auth/adminLogin.php`;
+           const url = `login.php`;
             let data = {
                 "email": this.email,
                 "password": this.password,
@@ -417,7 +417,7 @@ let app = Vue.createApp({
                 }
                 let token = successData.token;
                 window.localStorage.setItem("token", token);
-                window.location = `${this.baseUrl}admin/index.php`;
+                window.location = `${this.baseUrl}admin/admin-index.php`;
             }, 2);
         },
         async adminForgotPass() {

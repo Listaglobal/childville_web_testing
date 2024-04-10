@@ -10,7 +10,7 @@
                 <img src="asset/img/Logo2.png" width="50" height="50" alt="logo" />
             </a>
 
-            <a class="navbar-brand brand-logo-mini" href="../index.html">
+            <a class="navbar-brand brand-logo-mini" href="Javascript:void();">
                 <img src="asset/img/Logo2.png" alt="logo" />
             </a>
         </div>

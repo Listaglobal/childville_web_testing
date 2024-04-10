@@ -400,7 +400,7 @@ let app = Vue.createApp({
         // AUTH
         async staffLogin() {
             if (!this.email || !this.password) {
-                this.generalFunctions.Toastinator("error", "Kindly Enter all Fields")
+                this.generalFunctions.swalToast("error", "Kindly Enter all Fields")
                 return
             }
             const url = `login.php`;
