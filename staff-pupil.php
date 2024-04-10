@@ -24,7 +24,6 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="home-tab">
-
                                 <div class="row flex-grow">
                                     <div class="col-12 grid-margin stretch-card">
                                         <div class="card card-rounded">
@@ -130,9 +129,6 @@
                                                                     <div class="badge badge-opacity-success">Active</div>
                                                                 </td>
                                                             </tr>
-
-
-
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -140,19 +136,14 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- content-wrapper ends -->
             </div>
-            <!-- main-panel ends -->
         </div>
-        <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
+   
 
     <?php include 'includes/staff-footer.php' ?>
 </body>

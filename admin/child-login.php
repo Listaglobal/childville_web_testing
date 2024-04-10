@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="asset/img/Logo.png" rel="icon">
+    <link href="../asset/img/Logo2.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,7 +51,7 @@
                                 <div class="text-center mt-sm-5 mb-4 text-white-50">
                                     <div>
                                         <a href="index.php" class="d-inline-block auth-logo">
-                                            <img src="asset/img/Logo.png" alt="" height="80" width="80">
+                                            <img src="../asset/img/Logo2.png" alt="" height="80" width="80">
                                         </a>
                                     </div>
                                 </div>
@@ -99,8 +99,6 @@
         </div>
 
     </div>
-
-
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -108,14 +106,15 @@
     <script src="https://unpkg.com/vue@3"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
-    <script src="asset/lib/wow/wow.min.js"></script>
-    <script src="asset/lib/easing/easing.min.js"></script>
-    <script src="asset/lib/waypoints/waypoints.min.js"></script>
-    <script src="asset/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="../asset/lib/wow/wow.min.js"></script>
+    <script src="../asset/lib/easing/easing.min.js"></script>
+    <script src="../asset/lib/waypoints/waypoints.min.js"></script>
+    <script src="../asset/lib/owlcarousel/owl.carousel.min.js"></script>
 
-    <script src="asset/js/main.js"></script>
-    <script src="scripts/general_functions.js"></script>
-    <script src="vuejs/staff.js"></script>
+    <script src="../asset/js/main.js"></script>
+    <script src="../scripts/general_functions.js"></script>
+    <script src="../vuejs/staff.js"></script>
+
 </body>
 
 </html>
