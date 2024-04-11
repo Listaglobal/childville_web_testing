@@ -18,7 +18,7 @@ class Utility_Functions  extends DB_Connect
     public static $allowedImages = array('jpg','jpeg','svg','png','gif');
     public static $allowedFileType = array('image/png', 'image/x-png', 'image/jpeg', 'image/pjpeg');
     public static $max_file_size = 2097152;
-    public static $systemInitials = "GNG";
+    public static $systemInitials = "CHILDVILLE";
     public static $notificationBot = "6727269353:AAFRseCdJNEAquh6Q_5b7kXm6rorq7K9MN4";
     public static $crashBot = "6696254602:AAHWEH8pCKdG0c-JMGYwExRqwquLNg9tLEs";
     public static $notificationChatId = "-1002046207147";
@@ -608,9 +608,7 @@ class Utility_Functions  extends DB_Connect
                
                 if (in_array($img_ex_lc, $allowed_exs)) {
                     $folderPath = realpath(dirname(__DIR__));
-                    // $path = $folderPath."/assets/images/$path/";
                     $path = $folderPath . "../assets/images/$path/";
-                    // $path = "../../assets/images/$path/";
                     if ( !is_dir($path) ){
                         mkdir("$path", 0777, true);
                     }

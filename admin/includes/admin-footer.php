@@ -1,15 +1,12 @@
-<!-- JavaScript Libraries -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/vue@3"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
-<script src="../asset/lib/wow/wow.min.js"></script>
-<script src="../asset/lib/easing/easing.min.js"></script>
-<script src="../asset/lib/waypoints/waypoints.min.js"></script>
-<script src="../asset/lib/owlcarousel/owl.carousel.min.js"></script>
-
-<script src="../asset/js/main.js"></script>
-<script src="../scripts/general_functions.js"></script>
-<script src="../vuejs/staff.js"></script>
+    <script src="../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="../assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="../assets/vendors/progressbar.js/progressbar.min.js"></script>
+    <script src="../assets/js/off-canvas.js"></script>
+    <script src="../assets/js/hoverable-collapse.js"></script>
+    <script src="../assets/js/template.js"></script>
+    <script src="../assets/js/settings.js"></script>
+    <script src="../assets/js/todolist.js"></script>
+    <script src="../assets/js/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <script src="../assets/js/proBanner.js"></script>

@@ -62,6 +62,7 @@ $api_error_code_class_call= new Config\API_Error_Code;
 $usersTableClassCall= new DatabaseCall\Users_Table;
 $api_admin_table_class_call= new DatabaseCall\Admin_Table;
 $adminLevelDBCall = new DatabaseCall\Admin_Level_Table;
+$pupilsDBCall = new DatabaseCall\PuPils_Table;
 
 
 // Set the error and exception handlers using the instance of UtilsFunctions

@@ -19,44 +19,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // data sent in the request
-    $lname = " ";
-    if (isset($_POST['lname'])) {
-        $lname = $utility_class_call::escape($_POST['lname']);
+    $fullName = " ";
+    if (isset($_POST['fullName'])) {
+        $fullName = $utility_class_call::escape($_POST['fullName']);
     }
-
-    $fname = " ";
-    if (isset($_POST['fname'])) {
-        $fname = $utility_class_call::escape($_POST['fname']);
-    }
-
     $age = " ";
     if (isset($_POST['age'])) {
         $age = $utility_class_call::escape($_POST[' ']->age);
     }
 
     $dob = " ";
-    if (isset($_POST[' ']->dob)) {
-        $dob = $utility_class_call::escape($_POST[' ']->dob);
+    if (isset($_POST['dob'])) {
+        $dob = $utility_class_call::escape($_POST['dob']);
     }
 
     $image = " ";
-    if (isset($_POST[' ']->image)) {
-        $image = $utility_class_call::escape($_POST[' ']->image);
+    if (isset($_FILES['image'])) {
+        $image = $utility_class_call::escape($_FILES['image']);
     }
 
     $parentName = " ";
-    if (isset($_POST[' ']->parentName)) {
-        $parentName = $utility_class_call::escape($_POST[' ']->parentName);
+    if (isset($_POST['parentName'])) {
+        $parentName = $utility_class_call::escape($_POST['parentName']);
     }
 
     $parentContact = " ";
-    if (isset($_POST[' ']->parentContact)) {
-        $parentContact = $utility_class_call::escape($_POST[' ']->parentContact);
+    if (isset($_POST['parentContact'])) {
+        $parentContact = $utility_class_call::escape($_POST['parentContact']);
+    }
+
+    $parentEmail = " ";
+    if (isset($_POST['parentEmail'])) {
+        $parentEmail = $utility_class_call::escape($_POST['parentEmail']);
     }
 
     // checking all paramater are passed
 
-    if ($utility_class_call::validate_input($first_name) || $utility_class_call::validate_input($fname)) {
+    if ($utility_class_call::validate_input($fullName) || $utility_class_call::validate_input($age) || $utility_class_call::validate_input($dob) || $utility_class_call::validate_input($parentName) || $utility_class_call::validate_input($parentContact) || $utility_class_call::validate_input($parentEmail)) {
         $text = $api_response_class_call::$invalidDataSent;
         $errorcode = $api_error_code_class_call::$internalUserWarning;
         $maindata = [];
@@ -66,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
 
-    if (!$utility_class_call::validateEmail($email)) {
+    if (!$utility_class_call::validateEmail($parentEmail)) {
         $text = $api_response_class_call::$invalidDataSent;
         $errorcode = $api_error_code_class_call::$internalUserWarning;
         $maindata = [];
@@ -75,25 +74,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $api_status_code_class_call->respondBadRequest($maindata, $text, $hint, $linktosolve, $errorcode);
     }
 
-    // check if email exist 
-    $emailExist = $utility_class_call::checkIfExist("users", "email",  $email);
-    if ($emailExist) {
-        $text = $api_response_class_call::$emailExits;
+    $imageUploaded = "";
+    if (!is_array($image)) {
+        $text = $api_response_class_call::$imageNotSent;
         $errorcode = $api_error_code_class_call::$internalUserWarning;
         $maindata = [];
-        $hint = ["Ensure to send valid data to the API fields.", "pass in current and new password", "all fields should not be empty"];
+        $hint = ["Ensure to the right user with right access add forum."];
         $linktosolve = "https://";
         $api_status_code_class_call->respondBadRequest($maindata, $text, $hint, $linktosolve, $errorcode);
+    }
+
+    if ($image) {
+        $path = $orderTableClassCall::$imagePath;
+        $pdfUploaded = $utility_class_call::uploadImage($image, $path);
     }
 
     //inserting into Database 
     $data = [
-        "first_name" => $first_name,
-        "fname" => $fname,
-        "email" => $email,
+        "fullName" => $fullName,
+        "age" => $age,
+        "dob" => $dob,
+        "parentName" => $parentName,
+        "parentContact" => $parentContact,
+        "parentEmail" => $parentEmail,
+        "image" => $imageUploaded
     ];
 
-    $addUser = $usersTableClassCall::addUsers($data);
+    $addPuPils = $pupilsDBCall::addPuPils($data);
 
     if (!$addUser) {
         $text = $api_response_class_call::$errorAdded;
@@ -104,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $api_status_code_class_call->respondBadRequest($maindata, $text, $hint, $linktosolve, $errorcode);
     }
     $maindata = [];
-    $text = $api_response_class_call::$UserAdded;
+    $text = $api_response_class_call::$pupilsAddedd;
     $api_status_code_class_call->respondOK($maindata, $text);
 } else {
     $text = $api_response_class_call::$methodUsedNotAllowed;
