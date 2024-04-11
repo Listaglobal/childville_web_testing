@@ -27,14 +27,12 @@ class Users_Table extends Config\DB_Connect
     // APi functions
     public const  tableName = "users";
     public static $supportMail = "support@light.ng";
-    public static $imagesPath = "profile";
+    public static $imagesPath = "staff";
     public static $defaultProfilePath = "web";
     public static $baseurl = Constants::LIVE_OR_LOCAL == "1" ? Constants::LIVE_BASE_URL : Constants::BASE_URL;
     public static $loginSessionType = 1;
     public static $registerSessionType = 2;
-    public static $newLoginText = "You just logged into your LightNG account";
-    public static $newRegistrationText = "Welcome to LightNG, you just registered with us, enjoy your stay";
-
+    private static $minId = 0;
 
     public static function getUserByIdorEmailorUsername($username = "", $dataToGet = "*")
     {
@@ -115,42 +113,29 @@ class Users_Table extends Config\DB_Connect
         }
         return $alldata;
     }
-    public static function registerUser($email, $password, $firstname, $lastname, $phoneno, $refferedcode)
+    public static function addStaff($data)
     {
-        // get user that referred this new user by the referred code
-        $referDetails = self::getUserByIdorEmailorUsername($refferedcode, "user_id, phoneno");
-
-        $hashPassword = Utility_Functions::Password_encrypt($password);
         $user_id =  Utility_Functions::generateUniqueShortKey("users", "user_id");
+        $hashPassword = Utility_Functions::Password_encrypt($data["password"]);
         $user_pub_key =  Utility_Functions::generateUniquePubKey("users", "userpubkey");
-        $refby = $referDetails ? $referDetails['phoneno'] : '';
-        $refbyUserId = $referDetails ? $referDetails['user_id'] : '';
-        $fullname = $firstname . " " . $lastname;
+        $status = 1;
 
+        unset($data["password"]);
 
+        $params = [];
+        $paramString = "";
+        foreach ($data as $key => $val) {
+            $params[] = $val;
+            $paramString .= "s";
+        }
 
-        $data = "INSERT INTO `users`( `user_id`, `email`, `password`, `userpubkey`, fname, lname, phoneno, referby) VALUES (?,?,?,?,?,?,?,?)";
+        $data = "INSERT INTO `users`( `user_id`, `password`, `userpubkey`, `status`, `fname`, `lname`, `dob`,`sex`, `class`, `profile_pic`, `phoneno`, `email`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $connect = static::getDB();
         $stmt = $connect->prepare($data);
-        $stmt->bind_param("ssssssss", $user_id, $email, $hashPassword, $user_pub_key, $firstname, $lastname, $phoneno, $refby);
+        $stmt->bind_param("ssssssssssss", $user_id, $hashPassword, $user_pub_key, $status , ...$params );
         $executed = $stmt->execute();
         if ($executed) {
-            $sendEmail = $email != '' ? true : false;
-            $verifyIdentity = self::sendVerifyDetailsOTP($user_id, $phoneno, $email, $firstname);
-            //add notification//type 1=register, 2-login 3-change-password 4-update-details 5-fund-wallet 6-book-apartment 7-point-naira  8-checkin 9-checkout
-            $supportMail = self::$supportMail;
-            $message = "Hello $fullname, thank you for signing up. Welcome and congrats on becoming a member of the Light.ng family.\n If you have any questions, comments or concerns, don't hesitate to reach us via $supportMail.\nThank you and we are excited to have you! Cheers!";
-            $type = 1;
-            $transactionid = '';
-            $notification_header = 'Welcome to LightNG';
-            $status = 1;
-            
-            if ( $refbyUserId != '' ) self::giveReferralCashback($refbyUserId, $user_id);
-
-            return $user = [
-                'userid' => $user_id,
-                "userpubkey" => $user_pub_key
-            ];
+            return true;
         } else {
             return false;
         }
@@ -389,19 +374,6 @@ class Users_Table extends Config\DB_Connect
         }
     }
 
-    public static function addNewRegistrationNotification($user_id)
-    {
-
-        $header = "Welcome to Gate Africa";
-        $content = "We are delighted to have you as part of the Gate Africa community. Your registration is the first step towards simplifying your estate management experience.\n\nWith Gate Africa, you can effortlessly manage visitor access, make secure online payments, communicate seamlessly with fellow residents.\n\nThanks and best regards.
-        ";
-
-        $type = 3;
-
-
-        return;
-    }
-
     public static function deleteAccount($user_id)
     {
         $connect = static::getDB();
@@ -422,38 +394,28 @@ class Users_Table extends Config\DB_Connect
         return false;
     }
 
-    public static function getAllUsers($page, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params = [], $limit= null)
+    public static function getAllStaff($page, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params = [])
     {
         $connect = static::getDB();
         $alldata = [];
 
         //SELECT `id`, `trackid`, `email`, `fname`, `lname`, `businessname`, `businessnumber`, `address`, `username`, `phoneno`, `country`, `image`, `image_type`, `password`, `userpubkey`, `user_type`, `status`, `email_verified`, `deleted`, `profile_pic`, `created_at`, `updated_at` FROM `users` WHERE 1
         //get all data in database
-        $query = "SELECT * FROM `users` WHERE users.id > 0 $searchQuery $sortQuery";
+        $query = "SELECT * FROM `users` WHERE users.id > ? $searchQuery $sortQuery";
         $stmt = $connect->prepare($query);
-        if (count($params) > 0) {
-            $stmt->bind_param("$paramString", ...$params);
-        }
+        $stmt->bind_param("s$paramString", self::$minId,...$params);
         $stmt->execute();
         $result = $stmt->get_result();
         $total_numRow = $result->num_rows;
         $total_pages = ceil($total_numRow / $noPerPage);
 
-        // get Limit Query 
-        if ( $limit ){
-            $limitQuery = "LIMIT ?";
-            $paramString .= "s";
-            $params[] = $limit;
-        }else {
-            $limitQuery = "LIMIT ?,?";
-            $paramString .= "ss";
-            $params[] = $offset;
-            $params[] = $noPerPage;
-        }
+        $paramString .= "ss";
+        $params[] = $offset;
+        $params[] = $noPerPage;
 
-        $query = "$query ORDER BY id DESC $limitQuery";
+        $query = "$query ORDER BY id DESC LIMIT ?,? ";
         $stmt = $connect->prepare($query);
-        $stmt->bind_param("$paramString", ...$params);
+        $stmt->bind_param("s$paramString", self::$minId,...$params);
         $stmt->execute();
         $result = $stmt->get_result();
         $numRow = $result->num_rows;
@@ -488,99 +450,17 @@ class Users_Table extends Config\DB_Connect
             }
             $alldata = [
                 'page' => $page,
-                'per_page' => $limit? (int) $limit:  $noPerPage,
-                'total_data' => $total_numRow,
-                'totalPage' => $limit? 1: $total_pages,
-                'users' => $alldata
-            ];
-            return $alldata;
-        } else {
-            return $alldata;
-        }
-    }
-
-    public static function getUserMeter($page, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params = [])
-    {
-        $connect = static::getDB();
-        $alldata = [];
-
-        //get all data in database
-        $query = "SELECT * FROM `meter` LEFT JOIN users ON users.user_id = meter.user_id LEFT JOIN states ON states.state_id = meter.state_id LEFT JOIN discos ON discos.disco_id = meter.disco_id WHERE users.id > 0 $searchQuery $sortQuery";
-        $stmt = $connect->prepare($query);
-        if (count($params) > 0) {
-            $stmt->bind_param("$paramString", ...$params);
-        }
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $total_numRow = $result->num_rows;
-        $total_pages = ceil($total_numRow / $noPerPage);
-
-        $paramString .= "ss";
-        $params[] = $offset;
-        $params[] = $noPerPage;
-
-        $query = "$query ORDER BY meter.id DESC LIMIT ?,?";
-        $stmt = $connect->prepare($query);
-        $stmt->bind_param("$paramString", ...$params);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $numRow = $result->num_rows;
-
-
-        if ($numRow > 0) {
-            while ($row = $result->fetch_assoc()) {
-                // unset all variables needed
-                unset($row['meter_id']);
-                unset($row['state_id']);
-                unset($row['disco_id']);
-                unset($row['user_id']);
-                unset($row['id']);
-                unset($row['fcm']);
-                unset($row['updated_at']);
-                unset($row['userpubkey']);
-                unset($row['password']);
-                unset($row['user_pin']);
-                unset($row['user_identity_id']);
-                unset($row['refcode']);
-                unset($row['reg_method']);
-                unset($row['username_update']);
-                unset($row['password_changed']);
-                unset($row['last_password_update']);
-                unset($row['invalid_pin_tries']);
-
-
-                //status_value=> 1- active 2 - suspended 3 - banned 4 -frozen
-                if ($row['status'] == 1) {
-                    $row['status_value'] = 'Active';
-                } else if ($row['status'] == 0) {
-                    $row['status_value'] = 'Inactive';
-                } else {
-                    $row['status_value'] = 'Undefined';
-                }
-
-                if ($row['meter_type'] == 1) {
-                    $row['meter_type_value'] = 'PrePaid';
-                } else if ($row['meter_type'] == 0) {
-                    $row['meter_type_value'] = 'PostPaid';
-                }
-
-                $row['created_at'] = Utility_Functions::gettheTimeAndDate(strtotime($row['created_at']));
-
-                $data = json_decode(json_encode($row), true);
-                array_push($alldata, $data);
-            }
-            $alldata = [
-                'page' => $page,
                 'per_page' => $noPerPage,
                 'total_data' => $total_numRow,
                 'totalPage' => $total_pages,
-                'users' => $alldata
+                'staff' => $alldata
             ];
             return $alldata;
         } else {
             return $alldata;
         }
     }
+
 
     public static function deleteUser($userid)
     {

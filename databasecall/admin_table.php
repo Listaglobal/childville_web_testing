@@ -24,6 +24,7 @@ class Admin_Table extends Config\DB_Connect
 
      */
     // APi functions
+    public const  tableName = "admin";
     public static $imagesPath = "profile";
     public static $baseurl = Constants::LIVE_OR_LOCAL == "1" ? Constants::LIVE_BASE_URL : Constants::BASE_URL;
     public static function getAdminByEmail($email = "", $data = "*")

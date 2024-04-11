@@ -102,8 +102,6 @@ let app = Vue.createApp({
             totalData: null,
             totalPage: null,
             per_page: 10,
-            exportPer_page: 100,
-            totalExportPage: null,
             class_active: null,
             reset_token: null,
             search: null,
@@ -129,18 +127,6 @@ let app = Vue.createApp({
             weekly: null,
             monthly: null,
             time_sort_value: null,
-            top_product_ordered: null,
-            total_transactions: null,
-            total_successful_transactions: null,
-            total_pending_transactions: null,
-            total_failed_transactions: null,
-            total_customers: null,
-            total_discos: null,
-            bar_chart_data: null,
-            financialStatistics: null,
-            failledOrderChartData: null,
-            successOrderChartData: null,
-            chartcategory: null,
             enddate: null,
             startdate: null,
             disco_Profits: null,
@@ -155,7 +141,7 @@ let app = Vue.createApp({
             // login details
             email: null,
             password: null,
-            confirm_password: null,
+            confirmpassword: null,
             username: null,
             name: null,
             token: null,
@@ -163,6 +149,14 @@ let app = Vue.createApp({
             superAdmin: null,
             admin_initials: null,
             admin_level: null,
+            fname: null,
+            lname: null,
+            dob: null,
+            sex: null,
+            class: null,
+            staffNumber: null,
+            word: null,
+
 
             // pupils
             pupils : null,
@@ -177,7 +171,7 @@ let app = Vue.createApp({
         },
         logout() {
             window.localStorage.removeItem("token");
-            window.location = this.baseUrl + "/admin/login.php";
+            window.location = this.baseUrl + "/admin/admin-login.php";
         },
         async nextPage() {
             this.currentPage = parseInt(this.currentPage) + 1;
@@ -410,7 +404,7 @@ let app = Vue.createApp({
         },
         // Account
         async getAdminDetails() {
-            const url = `account/getAdminDetails.php`;
+            const url = `getDetails.php`;
             let headers = {
                 "Content-type": "application/json",
                 "Authorization": `Bearer ${this.token}`
@@ -695,154 +689,6 @@ let app = Vue.createApp({
                 this.loading = false;
             }
         },
-
-        // export sheet to excel
-        async exportToExcel() {
-
-            if (this.daily) {
-                this.time_sort_value = "Daily";
-            } else if (this.weekly) {
-                this.time_sort_value = "Weekly";
-            } else if (this.monthly) {
-                this.time_sort_value = "Monthly";
-            } else {
-                this.time_sort_value = "All time";
-            }
-
-            let daily = (this.daily != null) ? `&sortDaily=1` : "";
-            let weekly = (this.weekly != null) ? `&sortWeekly=1` : "";
-            let monthly = (this.monthly) ? `&sortMonthly=1` : "";
-            let sortDisco = (this.sortDiscos) ? `&disco_id=${this.sortDiscos}` : "";
-            let sortValue = (this.sort != null) ? `&sortstatus=${this.sort}` : "";
-            let exportPage = (this.currentExportPage != null) ? `&page=${this.currentExportPage}` : 1;
-            let exportPerPage = (this.exportPer_page != null) ? `&noPerPage=${this.exportPer_Page}` : 100;
-
-            const url = `${this.baseUrl}api/export_Excel.php?p=1${daily}${weekly}${monthly}${sortDisco}${sortValue}${exportPage}${exportPerPage}`;
-            window.location = url
-
-            const options = {
-                method: "GET",
-                data: data,
-                url,
-                headers: {
-                    //"Content-type": "application/json",
-                    "Authorization": `Bearer ${this.token}`
-                }
-            }
-            try {
-                this.loading = true;
-                const response = await axios(options);
-                if (response.data.status) {
-                    this.swalToast("success", response.data.text);
-
-                }
-            } catch (error) {
-                if (error.response) {
-                    if (error.response.status == 400) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 401) {
-                        const errorMsg = "User not Authorized";
-                        this.swalToast("error", errorMsg);
-                        window.location = `${this.baseUrl}admin/login.php`;
-
-                        this.token = null;
-                        return
-                    }
-
-                    if (error.response.status == 405) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 500) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-                }
-
-                this.swalToast("error", error.message || "Error processing request")
-
-
-            } finally {
-                this.loading = false;
-            }
-
-
-        },
-        // Cash Back
-        async getAllCashBack(load = 1) {
-
-            let search = (this.search) ? `&search=${this.search}` : '';
-            let sort = (this.sort != null) ? `&sortStatus=${this.sort}` : "";
-            let page = (this.currentPage) ? this.currentPage : 1;
-            let noPerPage = (this.per_page) ? this.per_page : 10;
-            const url = `${this.baseUrl}api/accounts/get_all_cashback.php?noPerPage=${noPerPage}&page=${page}${search}${sort}`;
-            const options = {
-                method: "GET",
-                headers: {
-                    //"Content-type": "application/json",
-                    "Authorization": `Bearer ${this.token}`
-                },
-                url
-            }
-            try {
-                if (load == 1) {
-                    this.loading = true;
-                }
-                const response = await axios(options);
-                if (response.data.status) {
-                    this.cashBank = response.data.data.cashBank;
-                    this.currentPage = response.data.data.page;
-                    this.totalData = response.data.data.total_data;
-                    this.totalPage = response.data.data.totalPage;
-                } else {
-                    this.cashBank = null;
-                    this.currentPage = 0;
-                    this.totalData = 0;
-                    this.totalPage = 0;
-                }
-            } catch (error) {
-                // //console.log(error);
-                if (error.response) {
-                    if (error.response.status == 400) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 401) {
-                        const errorMsg = "User not Authorized";
-                        this.swalToast("error", errorMsg);
-                        window.location = `${this.baseUrl}admin/login.php`;
-                        return
-                    }
-
-                    if (error.response.status == 405) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 500) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-                }
-
-                this.swalToast("error", error.message || "Error processing request")
-
-
-            } finally {
-                this.loading = false;
-            }
-        },
         //USERS
         async setUserRegMethod(method) {
             window.localStorage.setItem("reg_method", method);
@@ -850,12 +696,13 @@ let app = Vue.createApp({
         async removeUserRegMethod() {
             window.localStorage.removeItem("reg_method");
         },
-        async getAllUsers(load = 1) {
+        // staff
+        async getAllStaff(load = 1) {
             let search = (this.search) ? `&search=${this.search}` : "";
             let page = (this.currentPage) ? this.currentPage : 1;
             let per_page = (this.per_page) ? this.per_page : 20;
             let limit = (this.limit) ? `&limit=${this.limit}` : '';
-            const url = `user/getAllUsers.php?page=${page}&per_page=${per_page}${search}${limit}`;
+            const url = `staff/getAllStaff.php?page=${page}&per_page=${per_page}${search}${limit}`;
             let headers = {
                 "Content-type": "application/json",
                 "Authorization": `Bearer ${this.token}`
@@ -866,13 +713,42 @@ let app = Vue.createApp({
                 if (!successData) {
                     return;
                 }
-                this.users = successData.users;
+                this.staff = successData.staff;
                 this.currentPage = successData.page;
                 this.totalPage = successData.totalPage;
                 this.per_page = successData.per_page;
                 this.totalData = successData.total_data;
 
             });
+        },
+
+        async addStaff() {
+            let data = {
+                "fname" : this.fname,
+                "image" : this.imageSent,
+                "lname" : this.lname,
+                "dob": this.dob,
+                "sex": this.sex,
+                "class": this.word,
+                "staffNumber": this.staffNumber,
+                "email": this.email,
+                "password": this.password,
+                "confirmpassword" : this.confirmpassword
+            }
+
+            const url = `staff/add-staff.php`;
+
+            const headers = {
+                "Authorization": `Bearer ${this.token}`
+            }
+
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getAllStaff();
+                    document.getElementById("_closedisco").click();
+                    this.fname = this.imageSent = this.lname = this.dob = this.sex = this.word = this.staffNumber = this.email = this.password = this.confirmpassword = null;
+                } 
+            }, 2);
         },
        
         async getLatestUsers(load = 1) {
@@ -1332,410 +1208,14 @@ let app = Vue.createApp({
             }
 
         },
-        async getUserNotifications(load = 1) {
-            let user_id = (window.localStorage.getItem("user_id")) ? window.localStorage.getItem("user_id") : "";
-            let search = (this.search) ? `&search=${this.search}` : '';
-            let sort = (this.sort != null) ? `&sort=1&sortStatus=${this.sort}` : "";
-            let page = (this.user_currentPage) ? this.user_currentPage : 1;
-            let noPerPage = (this.per_page) ? this.per_page : 4;
 
-
-            const headers = {
-                "Authorization": `Bearer ${this.token}`,
-                "Content-type": "application/json"
-            }
-
-            let url = `${this.baseUrl}api/accounts/get_user_notification.php?userid=${user_id}&page=${page}&per_page=${noPerPage}&search=${search}&sort=${sort}`;
-            // console.log("url", url);
-            const options = {
-                method: "GET",
-                headers: {
-                    //"Content-type": "application/json",
-                    "Authorization": `Bearer ${this.token}`
-                },
-                url
-            }
-            try {
-                if (load == 1) {
-                    this.loading = true;
-                }
-                const response = await axios(options);
-                if (response.data.status) {
-                    this.user_notifications = response.data.data.notifications;
-                    this.user_currentPage = response.data.data.page;
-                    this.user_totalData = response.data.data.total_data
-                    this.user_totalPage = response.data.data.totalPage;
-
-                } else {
-                    this.user_notifications = null
-                    this.user_currentPage = null;
-                    this.user_totalData = null;
-                    this.user_totalPage = null;
-                }
-            } catch (error) {
-                if (error.response) {
-                    if (error.response.status == 400) {
-                        this.error = error.response.data.text;
-                        this.swalToast("error", this.error);
-                        return
-                    }
-
-                    if (error.response.status == 401) {
-                        this.error = "User not Authorized";
-                        this.swalToast("error", this.error);
-                        window.location = `${this.baseUrl}admin/login.php`;
-                        return
-                    }
-
-                    if (error.response.status == 405) {
-                        this.error = error.response.data.text;
-                        this.swalToast("error", this.error);
-                        return
-                    }
-
-                    if (error.response.status == 500) {
-                        this.error = error.response.data.text;
-                        this.swalToast("error", this.error);
-                        return
-                    }
-                }
-
-                this.error = error.message || "Error Processing Request"
-                this.swalToast("error", this.error);
-
-            } finally {
-                this.loading = false;
-            }
-
-        },
-        async getNotification(index) {
-            this.user_notification = this.user_notifications[index];
-        },
-
-        //system settings
-        async getSystemSettings(load = 1) {
-            const url = `${this.baseUrl}api/system_details/get_system_settings.php?`;
-            const options = {
-                method: "GET",
-                headers: {
-                    //"Content-type": "application/json",
-                    "Authorization": `Bearer ${this.token}`
-                },
-                url
-            }
-            try {
-                if (load == 1) {
-                    this.loading = true;
-                }
-                const response = await axios(options);
-                if (response.data.status) {
-                    this.systemSettings = response.data.data;
-                } else {
-                    this.systemSettings = null;
-                }
-            } catch (error) {
-                // //console.log(error);
-                if (error.response) {
-                    if (error.response.status == 400) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 401) {
-                        const errorMsg = "User not Authorized";
-                        this.swalToast("error", errorMsg);
-                        window.location = `${this.baseUrl}admin/login.php`;
-                        return
-                    }
-
-                    if (error.response.status == 405) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 500) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-                }
-
-                this.swalToast("error", error.message || "Error processing request")
-
-
-            } finally {
-                this.loading = false;
-            }
-        },
-        async uploadLightLogo(event) {
-            this.light_mode_logo = event.target.files[0];
-            console.log(this.light_mode_logo);
-        },
-        async uploadDarkLogo(event) {
-            this.dark_mode_logo = event.target.files[0];
-            console.log(this.dark_mode_logo);
-        },
-        async uploadMaxLogo(event) {
-            this.max_screen_logo = event.target.files[0];
-            console.log(this.max_screen_logo);
-        },
-        async uploadMidLogo(event) {
-            this.mid_screen_logo = event.target.files[0];
-            console.log(this.mid_screen_logo);
-        },
-        async uploadSmallLogo(event) {
-            this.small_screen_logo = event.target.files[0];
-            console.log(this.small_screen_logo);
-        },
-        async updateSystemSettings() {
-
-            if (this.systemSettings.name == null || this.systemSettings.iosversion == null ||
-                this.systemSettings.androidversion == null || this.systemSettings.webversion == null
-                || this.systemSettings.activesmssystem == null || this.systemSettings.activemailsystem == null || this.systemSettings.activepaymentsystem == null ||
-                !this.systemSettings.supportemail || !this.systemSettings.emailfrom || !this.systemSettings.referral_amount || !this.systemSettings.bot_number) {
-                this.swalToast("error", "Kindly fill all fields")
-            } else {
-
-                if (isNaN(this.systemSettings.min_funded)) {
-                    this.swalToast("error", "pass in valid min amount to fund")
-                    return
-                }
-                let data = new FormData();
-                data.append('systemSettingsid', this.systemSettings.id);
-                data.append('name', this.systemSettings.name);
-                data.append('baseurl', this.systemSettings.baseurl);
-                data.append('iosversion', this.systemSettings.iosversion);
-                data.append('androidversion', this.systemSettings.androidversion);
-                data.append('webversion', this.systemSettings.webversion);
-                data.append('activesmssystem', this.systemSettings.activesmssystem);
-                data.append('activemailsystem', this.systemSettings.activemailsystem);
-                data.append('activepaymentsystem', this.systemSettings.activepaymentsystem);
-                data.append('activevendsystem', this.systemSettings.activevendsystem);
-                data.append('supportemail', this.systemSettings.supportemail);
-                data.append('emailfrom', this.systemSettings.emailfrom);
-                data.append('min_funded', this.systemSettings.min_funded);
-                data.append('bot_number', this.systemSettings.bot_number);
-                data.append('referral_amount', this.systemSettings.referral_amount);
-                if (this.light_mode_logo) {
-                    data.append('light_mode_logo', this.light_mode_logo);
-                } else {
-                    data.append('light_mode_logo', this.systemSettings.light_mode_logo);
-                }
-                if (this.dark_mode_logo) {
-                    data.append('dark_mode_logo', this.dark_mode_logo);
-                } else {
-                    data.append('dark_mode_logo', this.systemSettings.dark_mode_logo);
-                }
-                if (this.max_screen_logo) {
-                    data.append('max_screen_logo', this.max_screen_logo);
-                } else {
-                    data.append('max_screen_logo', this.systemSettings.max_screen_logo);
-                }
-                if (this.mid_screen_logo) {
-                    data.append('mid_screen_logo', this.mid_screen_logo);
-                } else {
-                    data.append('mid_screen_logo', this.systemSettings.mid_screen_logo);
-                }
-                if (this.small_screen_logo) {
-                    data.append('small_screen_logo', this.small_screen_logo);
-                } else {
-                    data.append('small_screen_logo', this.systemSettings.small_screen_logo);
-                }
-
-                if (this.imageSent) {
-                    data.append('appimgurl', this.imageSent);
-                } else {
-                    data.append('appimgurl', this.systemSettings.appimgurl);
-                }
-
-                const url = `${this.baseUrl}api/system_details/updateSystemSettings.php`;
-
-                const options = {
-                    method: "POST",
-                    data,
-                    url,
-                    headers: {
-                        //"Content-type": "application/json",
-                        "Authorization": `Bearer ${this.token}`
-                    }
-                }
-
-                try {
-                    this.loading = true;
-                    const response = await axios(options);
-                    if (response.data.status) {
-                        this.swalToast("success", response.data.text);
-                        this.getSystemSettings(2);
-                        location.reload();
-
-                    }
-                } catch (error) {
-                    ////console.log(error);
-                    if (error.response.status == 400) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 401) {
-                        const errorMsg = "User not Authorized";
-                        this.swalToast("error", errorMsg);
-                        window.location = `${this.baseUrl}admin/login.php`;
-                        return
-                    }
-
-                    if (error.response.status == 405) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 500) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-                } finally {
-                    this.loading = false;
-                }
-            }
-
-        },
-        async getApiDataTable(load = 1) {
-            const url = `${this.baseUrl}api/system_details/getApiDataTable.php?`;
-            const options = {
-                method: "GET",
-                headers: {
-                    //"Content-type": "application/json",
-                    "Authorization": `Bearer ${this.token}`
-                },
-                url
-            }
-            try {
-                if (load == 1) {
-                    this.loading = true;
-                }
-                const response = await axios(options);
-                if (response.data.status) {
-                    this.apiDataTable = response.data.data;
-                } else {
-                    this.apiDataTable = null;
-                }
-            } catch (error) {
-                // //console.log(error);
-                if (error.response) {
-                    if (error.response.status == 400) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 401) {
-                        const errorMsg = "User not Authorized";
-                        errorMsg = this.error;
-                        this.swalToast("error", this.error);
-                        return
-                    }
-
-                    if (error.response.status == 405) {
-                        const errorMsg = error.response.data.text;
-                        errorMsg = this.error;
-                        this.swalToast("error", this.error);
-                        return
-                    }
-
-                    if (error.response.status == 500) {
-                        const errorMsg = error.response.data.text;
-                        errorMsg = this.error;
-                        this.swalToast("error", this.error);
-                        return
-                    }
-                }
-
-                this.swalToast("error", error.message || "Error processing request")
-
-
-            } finally {
-                this.loading = false;
-            }
-        },
-        async updateApiDataTable() {
-            // console.log(this.apiDataTable);
-            if (this.apiDataTable.privatekey == null || this.apiDataTable.tokenexpiremin == null || this.apiDataTable.servername == null) {
-                this.swalToast("error", "Kindly fill all fields")
-            } else {
-                data = new FormData();
-                data.append('id', this.apiDataTable.id);
-                data.append('privatekey', this.apiDataTable.privatekey);
-                data.append('tokenexpiremin', this.apiDataTable.tokenexpiremin);
-                data.append('servername', this.apiDataTable.servername);
-
-                const url = `${this.baseUrl}api/system_details/updateApiDataTable.php?`;
-
-                const options = {
-                    method: "POST",
-                    data,
-                    url,
-                    headers: {
-                        //"Content-type": "application/json",
-                        "Authorization": `Bearer ${this.token}`
-                    }
-                }
-
-                try {
-                    this.loading = true;
-                    const response = await axios(options);
-                    if (response.data.status) {
-                        this.swalToast("success", response.data.text);
-                        // window.location.href='admin/system_settings.php'
-                        location.reload();
-
-                    }
-                } catch (error) {
-                    ////console.log(error);
-                    if (error.response.status == 400) {
-                        const errorMsg = error.response.data.text;
-                        errorMsg = this.error;
-                        this.swalToast("error", this.error);
-                        return
-                    }
-
-                    if (error.response.status == 401) {
-                        const errorMsg = "User not Authorized";
-                        errorMsg = this.error;
-                        this.swalToast("error", this.error);
-                        return
-                    }
-
-                    if (error.response.status == 405) {
-                        const errorMsg = error.response.data.text;
-                        errorMsg = this.error;
-                        this.swalToast("error", this.error);
-                        return
-                    }
-
-                    if (error.response.status == 500) {
-                        const errorMsg = error.response.data.text;
-                        errorMsg = this.error;
-                        this.swalToast("error", this.error);
-                        return
-                    }
-                } finally {
-                    this.loading = false;
-                }
-            }
-
-        },
-
-        // pupils
-         async getAllPupils(load = 1) {
+        //pupils
+        async getAllPupils(load = 1) {
             let search = (this.search) ? `&search=${this.search}` : "";
             let page = (this.currentPage) ? this.currentPage : 1;
             let per_page = (this.per_page) ? this.per_page : 20;
             let limit = (this.limit) ? `&limit=${this.limit}` : '';
-            const url = `pupils/get_pupils.php?page=${page}&per_page=${per_page}${search}${limit}`;
+            const url = `pupils/getAllPupils.php?page=${page}&per_page=${per_page}${search}${limit}`;
             let headers = {
                 "Content-type": "application/json",
                 "Authorization": `Bearer ${this.token}`
@@ -1756,26 +1236,20 @@ let app = Vue.createApp({
         },
 
 
-        gotoPage(page) {
-            window.location = `${this.baseUrl}admin/${page}`;
-            // window.location.href=`print.php`
-        },
-
-
     },
     async beforeMount() {
         // this.getImages();
         this.pathname = window.location.href;
-        if (!webPage.includes("admin/login.php") && !webPage.includes("login")) {
-            window.localStorage.setItem("LightNGCurrentPage", webPage);
+        this.pathname = window.location.href;
+        if (!webPage.includes("admin-login.php") && !webPage.includes("staff-login")) {
+            window.localStorage.setItem("ChildVilleCurrentPage", webPage);
             this.loading = true;
             this.getToken();
             this.getAdminDetails();
             if (!this.token) {
-                window.location = `${this.baseUrl}admin/login.php`;
+                window.location = `${this.baseUrl}admin/admin-login.php`;
             }
         }
-
         if (webPage === 'index.php' || webPage === 'index' || webPage === '') {
             // await this.getAllStats();
         }
@@ -1785,19 +1259,17 @@ let app = Vue.createApp({
         if (webPage === 'index.php' || webPage === 'index' || webPage === '') {
             this.per_page = 5
             this.limit = 5
-            this.getAllTransactions();
-            this.getDiscoProfits();
+            
             this.getAllUsers()
             // this.getTopProductOrdered();
         }
 
-        if (webPage === 'discos.php' || webPage === 'discos') {
-            this.getAllDisco();
-            this.fetchDiscoValues();
-        }
-
         if (webPage === 'admin-pupils.php' || webPage === 'admin-pupils') {
             await this.getAllPupils();
+        }
+
+        if (webPage === 'admin-staff.php' || webPage === 'admin-staff') {
+            await this.getAllStaff();
         }
 
     }

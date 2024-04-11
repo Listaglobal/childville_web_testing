@@ -48,7 +48,12 @@
             <span class="menu-title">Request Time Off </span>
         </a>
     </li>
-
+    <li class="nav-item">
+        <a class="nav-link" href="#" @click="logout()">
+            <i class="mdi mdi-bomb-off menu-icon"></i>
+            <span class="menu-title">Log Out </span>
+        </a>
+    </li>
 
 
 </ul>

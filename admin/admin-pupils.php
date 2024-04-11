@@ -16,144 +16,82 @@
     <link rel="stylesheet" href="../assets/css/vertical-layout-light/style.css">
     <link rel="shortcut icon" href="../asset/img/Logo2.png" />
 </head>
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
 
 <body class="with-welcome-text">
-    <div class="container-scroller">
-        <?php include 'includes/admin-header.php' ?>
-        <div class="container-fluid page-body-wrapper">
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
-                <?php include 'includes/admin-sidebar.php' ?>
-            </nav>
-            <div class="main-panel">
-                <div class="content-wrapper">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="home-tab">
-                                <div class="row flex-grow">
-                                    <div class="col-12 grid-margin stretch-card">
-                                        <div class="card card-rounded">
-                                            <div class="card-body">
-                                                <div class="d-sm-flex justify-content-between align-items-start">
-                                                    <div>
-                                                        <h4 class="card-title card-title-dash">Child Ville Pupils</h4>
-                                                        <!-- <p class="card-subtitle card-subtitle-dash">You have 3 Pupils</p> -->
-                                                    </div>
+    <div id="admin" v-cloak>
+        <div class="container-scroller">
+            <?php include 'includes/admin-header.php' ?>
+            <div class="container-fluid page-body-wrapper">
+                <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                    <?php include 'includes/admin-sidebar.php' ?>
+                </nav>
+                <div class="main-panel">
+                    <div class="content-wrapper">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="home-tab">
+                                    <div class="row flex-grow">
+                                        <div class="col-12 grid-margin stretch-card">
+                                            <div class="card card-rounded">
+                                                <div v-if="pupils" class="card-body">
+                                                    <div class="d-sm-flex justify-content-between align-items-start">
+                                                        <div>
+                                                            <h4 class="card-title card-title-dash">Child Ville Pupils</h4>
+                                                            <!-- <p class="card-subtitle card-subtitle-dash">You have 3 Pupils</p> -->
+                                                        </div>
 
-                                                </div>
-                                                <div class="table-responsive  mt-1">
-                                                    <table class="table select-table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>PuPils Name</th>
-                                                                <th>Age</th>
-                                                                <th>Class</th>
-                                                                <th>Sex</th>
-                                                                <th>Parents Contact</th>
-                                                                <th>Status</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex ">
-                                                                        <img src="assets/images/faces/face1.jpg" alt="">
+                                                    </div>
+                                                    <div class="table-responsive  mt-1">
+                                                        <table class="table select-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Pupils Name</th>
+                                                                    <th>Pupils Date of Birth</th>
+                                                                    <th>age</th>
+                                                                    <th>Parents Contact</th>
+                                                                    <th>Status</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr v-for='(item, index) in pupils'>
+                                                                    <td>
+                                                                        <div class="d-flex ">
+                                                                            <img v-if='item.image' :src="baseUrl +'/assets/images/pupils/'+item.image" alt="Pupils image" class="thumb __567788">
+                                                                            <div class="mt-3 text-align-center">
+                                                                                <h6>{{item.fullName}}</h6>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <h6>{{item.DOB}}</h6>
+                                                                    </td>
+                                                                    <td>
+                                                                        <h6>{{item.age}}</h6>
+                                                                    </td>
+                                                                    <td>
                                                                         <div>
-                                                                            <h6>Brandon Washington</h6>
-                                                                            <p></p>
+                                                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
+                                                                                <p class="text-success">{{item.pcontant}}</p>
+                                                                            </div>
+                                                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
+                                                                                <p>{{item.parentName}}</p>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <h6>4 Years</h6>
-                                                                </td>
-                                                                <td>
-                                                                    <h6>Grade 2</h6>
-                                                                </td>
-                                                                <td>
-                                                                    <h6>Female</h6>
-                                                                </td>
-                                                                <td>
-                                                                    <div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p class="text-success">+23729474</p>
-                                                                        </div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p>Washington James</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="badge badge-opacity-success">Active</div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex ">
-                                                                        <img src="assets/images/faces/face1.jpg" alt="">
-                                                                        <div>
-                                                                            <h6>Brandon Washington</h6>
-                                                                            <p></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <h6>4 Years</h6>
-                                                                </td>
-                                                                <td>
-                                                                    <h6>Grade 2</h6>
-                                                                </td>
-                                                                <td>
-                                                                    <h6>Female</h6>
-                                                                </td>
-                                                                <td>
-                                                                    <div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p class="text-success">+23729474</p>
-                                                                        </div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p>Washington James</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="badge badge-opacity-success">Active</div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex ">
-                                                                        <img src="assets/images/faces/face1.jpg" alt="">
-                                                                        <div>
-                                                                            <h6>Brandon Washington</h6>
-                                                                            <p></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <h6>4 Years</h6>
-                                                                </td>
-                                                                <td>
-                                                                    <h6>Grade 2</h6>
-                                                                </td>   
-                                                                <td>
-                                                                    <h6>Female</h6>
-                                                                </td>
-                                                                <td>
-                                                                    <div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p class="text-success">+23729474</p>
-                                                                        </div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p>Washington James</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="badge badge-opacity-success">Active</div>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div v-if="item.status == 1" class="badge badge-opacity-success">Active</div>
+                                                                        <div v-if="item.status == 2" class="badge badge-opacity-danger">Inactive</div>
+                                                                    </td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -166,6 +104,7 @@
             </div>
         </div>
     </div>
+
     <?php include 'includes/admin-footer.php' ?>
 
 </body>

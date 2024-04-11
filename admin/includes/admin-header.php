@@ -18,7 +18,7 @@
     <div v-if="adminDetails" class="navbar-menu-wrapper d-flex align-items-top">
         <ul class="navbar-nav">
             <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                <h1 class="welcome-text">Hello, <span class="text-black fw-bold">John Doe</span></h1>
+                <h1 class="welcome-text">Hello, <span class="text-black fw-bold">{{adminDetails.name}}</span></h1>
             </li>
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -62,10 +62,10 @@
                             </a>
                         </div> -->
             </li>
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
                 <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="icon-mail icon-lg"></i>
-                </a>
+                </a> -->
                 <!-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="countDropdown">
                             <a class="dropdown-item py-3">
                                 <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
@@ -107,16 +107,12 @@
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                     <div class="dropdown-header text-center">
                         <img class="img-xs rounded-circle" src="asset/img/img2.jpg" alt="Profile image">
-                        <p class="mb-1 mt-3 font-weight-semibold">{{adminDetails.fname}} {{adminDetails.lname}}</p>
+                        <p class="mb-1 mt-3 font-weight-semibold">{{adminDetails.name}}</p>
                         <p class="fw-light text-muted mb-0">{{adminDetails.email}}</p>
                     </div>
                     <a href="staff-details.php?id={{adminDetails.user_id}}" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My
                         Profile </a>
-                    <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>
-                        Messages</a>
-                    <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i>
-                        Activity</a>
-                    <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+                    <a @click="logout()" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
                 </div>
             </li>
         </ul>

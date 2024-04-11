@@ -57,8 +57,14 @@
     </li>
     <li class="nav-item">
         <a class="nav-link" href="admin-actiVity.php">
-            <i class="mdi mdi-VectorPolyline menu-icon"></i>
+            <i class="mdi mdi-office-building-cog-outline menu-icon"></i>
             <span class="menu-title">Child Ville Staff Activity Log </span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#" @click="logout()">
+            <i class="mdi mdi-bomb-off menu-icon"></i>
+            <span class="menu-title">Log Out </span>
         </a>
     </li>
 </ul>

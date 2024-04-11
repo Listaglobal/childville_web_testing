@@ -6699,7 +6699,6 @@ let app = Vue.createApp({
             window.localStorage.setItem("ChildVilleCurrentPage", webPage);
             this.loading = true;
             this.getToken();
-            console.log("Token", this.token);
             this.getAdminDetails();
             if (!this.token) {
                 window.location = `${this.baseUrl}staff-login.php`;

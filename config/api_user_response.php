@@ -77,6 +77,7 @@ class API_User_Response
     public  static $errorOccured = "An Error occured, Please contact support";
     public  static $invalidCode = "Invalid code";
     public  static $errorGeneratingCode = "Error generating code";
+    public static $passwordnotSame = "Password and Confirm Password not the same";
 
 
     //db error
@@ -121,6 +122,7 @@ class API_User_Response
     public static $deleteUser = "User deleted successfuly";
     public static $emailVerified = "Email verified successfully";
     public static $phoneVerified = "Phone verified successfully";
+    public static $staffCreated = "ChildVille Staff Portal Created";
 
     // image upload 
     public static $fileTooLarge = "Image Too Large";
