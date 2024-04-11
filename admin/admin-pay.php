@@ -148,6 +148,42 @@
             </div>
         </div>
     </div>
+    <!-- Add Staff pay Roll  -->
+    <div class="modal fade " id="adddisco" style="padding-left: 0px;" aria-modal="true" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Staff Pay Roll</h5>
+                    <a href="#" class="close" id='_closedisco' data-bs-dismiss="modal" aria-label="Close"><i class="mdi mdi-close"></i></a>
+                </div>
+                <div class="modal-body">
+                    <form @submit.prevent>
+
+                        <div class="form-group">
+                            <label class="form-label" for="quantity-add">Staff Pdf</label>
+                            <div class="form-control-wrap">
+                                <div class="form-file">
+                                    <input id="input_file__" type="file" accept="image/*" @change='uploadImage' class="form-file-input" id="customFile">
+                                    <label class="form-file-label" for="customFile">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="oneapp">Select Staff </label>
+                            <div class="form-control-wrap">
+                                <select v-model="oneapp_code" class="form-select" id="oneappcode" required>
+                                    <option value="null">Select Staff Sex</option>
+                                    <option value="1">Washington John</option>
+                                    <option value="2">Jane Doe</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group"><button @click='addDisco' class="btn btn-lg btn-primary">Send Staff PayRoll</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <?php include 'includes/admin-footer.php' ?>
 
 </body>

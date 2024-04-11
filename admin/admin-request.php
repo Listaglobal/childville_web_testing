@@ -38,7 +38,7 @@
                                                         <h4 class="card-title card-title-dash">Child Ville Staff Time Off Request</h4>
                                                     </div>
                                                 </div>
-                                                <div class="table-responsive  mt-1">
+                                                <!-- <div class="table-responsive  mt-1">
                                                     <table class="table select-table">
                                                         <thead>
                                                             <tr>
@@ -132,7 +132,7 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>

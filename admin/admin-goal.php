@@ -36,7 +36,6 @@
                                                 <div class="d-sm-flex justify-content-between align-items-start">
                                                     <div>
                                                         <h4 class="card-title card-title-dash">Child Ville Staff Goal</h4>
-                                                        <p class="card-subtitle card-subtitle-dash">You have 3 Pupils</p>
                                                     </div>
                                                     <div>
                                                         <a data-bs-toggle="modal" href="#adddisco" class="btn btn-primary btn-lg text-white mb-0 me-0" type="button"><i class="mdi mdi-account-plus"></i>Create Staff Goal </a>
@@ -46,92 +45,39 @@
                                                     <table class="table select-table">
                                                         <thead>
                                                             <tr>
-                                                                <th>PuPils Name</th>
-                                                                <th>Sex</th>
-                                                                <th>Parents Contact</th>
+                                                                <th>Staff Name</th>
+                                                                <th>Date</th>
+                                                                <th>Goal To achieve</th>
                                                                 <th>Status</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
                                                                 <td>
-                                                                    <div class="d-flex ">
-                                                                        <img src="assets/images/faces/face1.jpg" alt="">
-                                                                        <div>
-                                                                            <h6>Brandon Washington</h6>
-                                                                            <p></p>
-                                                                        </div>
-                                                                    </div>
+                                                                    <h6>Brandon Washington</h6>
                                                                 </td>
                                                                 <td>
-                                                                    <h6>Female</h6>
+                                                                    <h6>May 15, 2015</h6>
                                                                 </td>
                                                                 <td>
-                                                                    <div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p class="text-success">+23729474</p>
-                                                                        </div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p>Washington James</p>
-                                                                        </div>
-                                                                    </div>
+                                                                    <h6>Set all the diffecuot and make it good</h6>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="badge badge-opacity-success">Active</div>
+                                                                    <div class="badge badge-opacity-success">Done</div>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <div class="d-flex ">
-                                                                        <img src="assets/images/faces/face1.jpg" alt="">
-                                                                        <div>
-                                                                            <h6>Brandon Washington</h6>
-                                                                            <p></p>
-                                                                        </div>
-                                                                    </div>
+                                                                    <h6>Brandon Washington</h6>
                                                                 </td>
                                                                 <td>
-                                                                    <h6>Female</h6>
+                                                                    <h6>May 15, 2015</h6>
                                                                 </td>
                                                                 <td>
-                                                                    <div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p class="text-success">+23729474</p>
-                                                                        </div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p>Washington James</p>
-                                                                        </div>
-                                                                    </div>
+                                                                    <h6>Set all the diffecuot and make it good</h6>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="badge badge-opacity-success">Active</div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex ">
-                                                                        <img src="assets/images/faces/face1.jpg" alt="">
-                                                                        <div>
-                                                                            <h6>Brandon Washington</h6>
-                                                                            <p></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <h6>Female</h6>
-                                                                </td>
-                                                                <td>
-                                                                    <div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p class="text-success">+23729474</p>
-                                                                        </div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p>Washington James</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="badge badge-opacity-success">Active</div>
+                                                                    <div class="badge badge-opacity-success">Done</div>
                                                                 </td>
                                                             </tr>
                                                         </tbody>

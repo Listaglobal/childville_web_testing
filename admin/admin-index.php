@@ -78,11 +78,8 @@
                                                                 <div class="d-sm-flex justify-content-between align-items-start">
                                                                     <div>
                                                                         <h4 class="card-title card-title-dash">Child Ville Pupils</h4>
-                                                                        <p class="card-subtitle card-subtitle-dash">You have 3 Pupils</p>
                                                                     </div>
-                                                                    <div>
-                                                                        <button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button"><i class="mdi mdi-account-plus"></i>Add new Pupils</button>
-                                                                    </div>
+                                                                    
                                                                 </div>
                                                                 <div class="table-responsive  mt-1">
                                                                     <table class="table select-table">

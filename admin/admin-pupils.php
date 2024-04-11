@@ -38,13 +38,15 @@
                                                         <h4 class="card-title card-title-dash">Child Ville Pupils</h4>
                                                         <!-- <p class="card-subtitle card-subtitle-dash">You have 3 Pupils</p> -->
                                                     </div>
-                                                    
+
                                                 </div>
                                                 <div class="table-responsive  mt-1">
                                                     <table class="table select-table">
                                                         <thead>
                                                             <tr>
                                                                 <th>PuPils Name</th>
+                                                                <th>Age</th>
+                                                                <th>Class</th>
                                                                 <th>Sex</th>
                                                                 <th>Parents Contact</th>
                                                                 <th>Status</th>
@@ -62,31 +64,10 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <h6>Female</h6>
+                                                                    <h6>4 Years</h6>
                                                                 </td>
                                                                 <td>
-                                                                    <div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p class="text-success">+23729474</p>
-                                                                        </div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p>Washington James</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="badge badge-opacity-success">Active</div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex ">
-                                                                        <img src="assets/images/faces/face1.jpg" alt="">
-                                                                        <div>
-                                                                            <h6>Brandon Washington</h6>
-                                                                            <p></p>
-                                                                        </div>
-                                                                    </div>
+                                                                    <h6>Grade 2</h6>
                                                                 </td>
                                                                 <td>
                                                                     <h6>Female</h6>
@@ -115,6 +96,45 @@
                                                                         </div>
                                                                     </div>
                                                                 </td>
+                                                                <td>
+                                                                    <h6>4 Years</h6>
+                                                                </td>
+                                                                <td>
+                                                                    <h6>Grade 2</h6>
+                                                                </td>
+                                                                <td>
+                                                                    <h6>Female</h6>
+                                                                </td>
+                                                                <td>
+                                                                    <div>
+                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
+                                                                            <p class="text-success">+23729474</p>
+                                                                        </div>
+                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
+                                                                            <p>Washington James</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="badge badge-opacity-success">Active</div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex ">
+                                                                        <img src="assets/images/faces/face1.jpg" alt="">
+                                                                        <div>
+                                                                            <h6>Brandon Washington</h6>
+                                                                            <p></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h6>4 Years</h6>
+                                                                </td>
+                                                                <td>
+                                                                    <h6>Grade 2</h6>
+                                                                </td>   
                                                                 <td>
                                                                     <h6>Female</h6>
                                                                 </td>

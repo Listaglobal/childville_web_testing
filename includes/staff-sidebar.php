@@ -30,24 +30,16 @@
             <span class="menu-title">Performance And Reviews </span>
         </a>
     </li>
-    <!-- <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-            <i class="menu-icon mdi mdi-airballoon"></i>
-            <span class="menu-title">Goals</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="ui-basic">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="">Weekly</a></li>
-                <li class="nav-item"> <a class="nav-link" href="">Monthly</a></li>
-                <li class="nav-item"> <a class="nav-link" href="">Yearly</a></li>
-            </ul>
-        </div>
-    </li> -->
     <li class="nav-item">
         <a class="nav-link" href="staff-goal.php">
             <i class="menu-icon mdi mdi-airballoon"></i>
             <span class="menu-title">Staff Goals </span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="staff-todo.php">
+            <i class="menu-icon mdi mdi-airballoon"></i>
+            <span class="menu-title">Staff Task Lisk </span>
         </a>
     </li>
     <li class="nav-item">

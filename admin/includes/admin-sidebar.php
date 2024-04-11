@@ -14,7 +14,7 @@
 
     <li class="nav-item">
         <a class="nav-link" href="admin-staff.php">
-            <i class="mdi mdi-airplane-takeoff menu-icon"></i>
+            <i class="mdi mdi-account-details menu-icon"></i>
             <span class="menu-title">All Child Ville Staff</span>
         </a>
     </li>
@@ -47,6 +47,18 @@
         <a class="nav-link" href="admin-request.php">
             <i class="mdi mdi-airplane-takeoff menu-icon"></i>
             <span class="menu-title">Child Ville Staff Request </span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="admin-todo.php">
+            <i class="mdi mdi-folder-cog-outline menu-icon"></i>
+            <span class="menu-title">Child Ville To Do </span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="admin-actiVity.php">
+            <i class="mdi mdi-VectorPolyline menu-icon"></i>
+            <span class="menu-title">Child Ville Staff Activity Log </span>
         </a>
     </li>
 </ul>
