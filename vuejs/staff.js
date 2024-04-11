@@ -122,31 +122,11 @@ let app = Vue.createApp({
             imagefile: null,
             itemDetails: null,
             imageSent: null,
-            iconSent: null,
             pathname: null,
             success: null,
             daily: null,
             weekly: null,
             monthly: null,
-            time_sort_value: null,
-            top_product_ordered: null,
-            total_transactions: null,
-            total_successful_transactions: null,
-            total_pending_transactions: null,
-            total_failed_transactions: null,
-            total_customers: null,
-            total_discos: null,
-            bar_chart_data: null,
-            financialStatistics: null,
-            failledOrderChartData: null,
-            successOrderChartData: null,
-            chartcategory: null,
-            enddate: null,
-            startdate: null,
-            disco_Profits: null,
-            top_disco:null,
-            status: null,
-            sort_status_value: null,
 
             //admin
             admins: null,
@@ -164,156 +144,15 @@ let app = Vue.createApp({
             admin_initials: null,
             admin_level: null,
 
-            //notifications
-            userNotifications: null,
-            userNotifications_totalData: null,
-            userNotifications_total_page: null,
-            userNotifications_currentPage: null,
-            userNotifications_per_page: null,
-            notificationType: null,
-
-            //systemsetttings
-            systemSettings: null,
-            apiDataTable: null,
-            light_mode_logo: null,
-            dark_mode_logo: null,
-            max_screen_logo: null,
-            mid_screen_logo: null,
-            small_screen_logo: null,
-
-            // meter
-            meters: null,
-            meter_name: null,
-            meter_type: null,
-            meter_no: null,
-            meterDetails: null,
-            sort_meter_type: null,
-            sort_meter_value: null,
-
-
-            //disco
-            disco_id: null,
-            oneapp_code: null,
-            vtpass_code: null,
-            clubconnect_code: null,
-            discoDetails: null,
-            discos: null,
-            clubconnectcodes: null,
-            vtpasscodes: null,
-            shortname: null,
-            service_charge: null,
-            color_code: null,
-            vtpassDiscoscodes: null,
-
-            //states
-            states: null,
-            state_id: null,
-            stateDetails: null,
-
-
-            //users
-            users: null,
-            user_details: null,
-            user_notifications: null,
-            user_currentPage: null,
-            user_totalData: null,
-            user_totalPage: null,
-            user_per_page: null,
-
-            //User Transaction
-            user_transactions: null,
-            user_trans_currentPage: null,
-            user_trans_totalData: null,
-            user_trans_totalPage: null,
-            user_trans_per_page: null,
-
-            //User meter
-            user_meter_currentPage: null,
-            user_meter_totalData: null,
-            user_meter_totalPage: null,
-            user_meters: null,
-
-            // discount code
-            code: null,
-            amount: null,
-            discount_code_id: null,
-            discounts: null,
-            discount_details: null,
-            discount_type: null,
-
-
-            //adverts
-            adverts: null,
-            advertUrl: null,
-            advertText: null,
-            advert_details: null,
-
-            //ThirdParty api
-            apiKey: null,
-            apiName: null,
-            apiWallet: null,
-            apiMerchant: null,
-            apiAccno: null,
-            apiUsername: null,
-            apiPassword: null,
-            sendFrom: null,
-            emailFrom: null,
-            sendType: null,
-            apiToken: null,
-            routing: null,
-            smsChannel: null,
-            smsType: null,
-            monifys: null,
-            monify_details: null,
-            kudis: null,
-            kudi_details: null,
-            payStacks: null,
-            payStack_details: null,
-            vtPass: null,
-            vtpass_details: null,
-            vtpassDetail: null,
-            vtpasss_url: null,
-            sendGrids: null,
-            sendGrid_details: null,
-            termiApis: null,
-            termiApi_details: null,
-            smartSolutions: null,
-            smartSolution_details: null,
-            clubkonnects: null,
-            clubkonnects_details: null,
-            secretKey: null,
-            publicKey: null,
-            oneApps: null,
-            oneapp_details: null,
-            vendFlatRate: null,
-            simpuApis: null,
-            simpuApiDetails: null,
-            apiWallet: null,
-            apiMerchant: null,
-            apiAccno: null,
-            apiKey: null,
-            apiName: null,
-            secretKey: null,
-            MonifyUrl: null,
-
-            // Transactions
-            transactions: null,
-            trans_type: null,
-            trans_val: null,
-            payment_type: null,
-            pay_value: null,
-            total_transactions: null,
-            sortDiscos: null,
-
-            //financial summary
-            financialStatistics: null,
-            yearMonth: '',
-            failledOrderChartData: null,
-            successOrderChartData: null,
-
-            //cash back 
-            cashBank: null,
-
+            //pupils
+            fullName: null,
+            dob: null,
+            age: null,
+            parentName: null,
+            parentContact : null,
+            parentEmail: null,
+            word: null,
+            pupils: null,
         }
     },
     methods: {
@@ -420,141 +259,6 @@ let app = Vue.createApp({
                 window.location = `${this.baseUrl}staff-profile.php`;
             }, 2);
         },
-        async adminForgotPass() {
-            if (!this.username) {
-                this.error = "Insert all fields"
-                this.swalToast("error", this.error);
-            }
-            const data = new FormData();
-            data.append('username', this.username);
-
-            const headers = {
-                "Content-type": "application/json"
-            }
-
-            try {
-                this.loading = true
-                const response = await axios.post(`${this.baseUrl}api/auth/forgotAdminPass.php`,
-                    data, { headers });
-
-                if (response.data.data) {
-                    this.success = response.data.text;
-                    this.swalToast("success", this.success);
-                }
-            } catch (error) {
-                // //console.log(error);
-                if (error.response) {
-                    if (error.response.status == 400) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 401) {
-                        const errorMsg = "User not Authorized";
-                        this.token = null;
-                        return
-                    }
-
-                    if (error.response.status == 405) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 500) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-                }
-
-                this.swalToast("error", error.message || "Error processing request")
-
-
-            } finally {
-                this.loading = false;
-            }
-
-
-        },
-        async admin_resetPassword() {
-            // console.log("clicked");
-
-            const urlParams = new URLSearchParams(window.location.search);
-            const token = (urlParams.get('token')) ? urlParams.get('token') : null;
-
-
-            if (!token) {
-                this.error = "Kindly check your mail for the valid rest password link"
-                this.swalToast("error", this.error);
-                return
-            }
-
-            if (!this.confirm_password || !this.password) {
-                this.error = "Kindly Enter all fields"
-                this.swalToast("error", this.error);
-
-            }
-            if (this.confirm_password !== this.password) {
-                this.error = "Password Does not match"
-                this.swalToast("error", this.error);
-
-            }
-
-            const headers = { "Content-type": "application/json" }
-
-            const data = new FormData();
-            data.append('password', this.password);
-            data.append('token', token);
-
-
-            try {
-                this.loading = true
-                const response = await axios.post(`${this.baseUrl}api/auth/resetAdminpassword.php`,
-                    data, { headers });
-                if (response.data.status) {
-                    this.success = response.data.text;
-                    window.location.href = "./adminLogin.php";
-                }
-            } catch (error) {
-                // //console.log(error);
-                if (error.response) {
-                    if (error.response.status == 400) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 401) {
-                        const errorMsg = "User not Authorized";
-                        // this.swalToast("error",errorMsg);
-                        // // window.location = `${this.baseUrl}admin/login.php`;
-
-                        this.token = null;
-                        return
-                    }
-
-                    if (error.response.status == 405) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 500) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-                }
-
-                this.swalToast("error", error.message || "Error processing request")
-
-
-            } finally {
-                this.loading = false;
-            }
-        },
         // Account
         async getAdminDetails() {
             const url = `getAdminDetails.php`;
@@ -571,8 +275,41 @@ let app = Vue.createApp({
                 this.adminDetails = successData;
             });
         },
-        async getAllAdmin(load = 1) {
-              const url = `account/getAllAdmin.php`;
+
+        ///pupils
+        async addPupils() {
+            let data = {
+                "fullName" : this.fullName,
+                "image" : this.imageSent,
+                "dob" : this.dob,
+                "age": this.age,
+                "class": this.word,
+                "parentName": this.parentName,
+                "parentContact": this.parentContact,
+                "parentEmail": this.parentEmail
+            }
+
+            const url = `pupils/add_pupils.php`;
+
+            const headers = {
+                "Authorization": `Bearer ${this.token}`
+            }
+
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getAllPupils();
+                    document.getElementById("_closedisco").click();
+                    this.fullName = this.imageSent = this.dob = this.age = this.class = this.parentName = this.parentContact = this.parentEmail = null;
+                } 
+            }, 2);
+        },
+
+        async getAllPupils(load = 1) {
+            let search = (this.search) ? `&search=${this.search}` : "";
+            let page = (this.currentPage) ? this.currentPage : 1;
+            let per_page = (this.per_page) ? this.per_page : 20;
+            let limit = (this.limit) ? `&limit=${this.limit}` : '';
+            const url = `pupils/get_pupils.php?page=${page}&per_page=${per_page}${search}${limit}`;
             let headers = {
                 "Content-type": "application/json",
                 "Authorization": `Bearer ${this.token}`
@@ -583,413 +320,17 @@ let app = Vue.createApp({
                 if (!successData) {
                     return;
                 }
-                this.admins = successData.admins;
+                this.pupils = successData.pupils;
+                this.currentPage = successData.page;
+                this.totalPage = successData.totalPage;
+                this.per_page = successData.per_page;
+                this.totalData = successData.total_data;
+
             });
         },
-        async addAdmin() {
-            if (!this.email == null || !this.username == null || !this.name == null || !this.password == null || !this.admin_level == null) {
-                this.swalToast("error", "Kindly fill all fields")
-                return
-            }
 
-            let data = new FormData();
-            data.append('email', this.email);
-            data.append('password', this.password);
-            data.append('name', this.name);
-            data.append('adminLevel', this.admin_level);
 
-
-            const url = `${this.baseUrl}api/admin/addAdmin.php`;
-
-            const options = {
-                method: "POST",
-                data: data,
-                url,
-                headers: {
-                    //"Content-type": "application/json",
-                    "Authorization": `Bearer ${this.token}`
-                }
-            }
-
-            try {
-                this.loading = true;
-                const response = await axios(options);
-                if (response.data.status) {
-                    this.swalToast("success", response.data.text);
-                    this.admin_level = this.email = this.password = this.name = null;
-                    await this.getAllAdmin(8);
-                }
-            } catch (error) {
-                // //console.log(error);
-                if (error.response) {
-                    if (error.response.status == 400) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 401) {
-                        const errorMsg = "User not Authorized";
-                        this.swalToast("error", errorMsg);
-                        window.location = `${this.baseUrl}admin/login.php`;
-
-                        this.token = null;
-                        return
-                    }
-
-                    if (error.response.status == 405) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 500) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-                }
-
-                this.swalToast("error", error.message || "Error processing request")
-
-
-            } finally {
-                this.loading = false;
-            }
-        },
-        async changeAdminStatus(id, status) {
-
-            let data = new FormData();
-            data.append('status', status);
-            data.append('id', id);
-
-
-            const url = `${this.baseUrl}api/admin/changeAdminStatus.php`;
-
-            const options = {
-                method: "POST",
-                data: data,
-                url,
-                headers: {
-                    //"Content-type": "application/json",
-                    "Authorization": `Bearer ${this.token}`
-                }
-            }
-
-            try {
-                this.loading = true;
-                const response = await axios(options);
-                if (response.data.status) {
-                    this.swalToast("success", response.data.text);
-                    await this.getAllAdmin(8);
-                }
-            } catch (error) {
-                // //console.log(error);
-                if (error.response) {
-                    if (error.response.status == 400) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 401) {
-                        const errorMsg = "User not Authorized";
-                        this.swalToast("error", errorMsg);
-                        window.location = `${this.baseUrl}admin/login.php`;
-
-                        this.token = null;
-                        return
-                    }
-
-                    if (error.response.status == 405) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 500) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-                }
-
-                this.swalToast("error", error.message || "Error processing request")
-
-
-            } finally {
-                this.loading = false;
-            }
-        },
-        async resetAdminPassword(id) {
-
-            let data = new FormData();
-            data.append('admin_id', id);
-
-
-            const url = `${this.baseUrl}api/admin/resetAdminPassword.php`;
-
-            const options = {
-                method: "POST",
-                data: data,
-                url,
-                headers: {
-                    //"Content-type": "application/json",
-                    "Authorization": `Bearer ${this.token}`
-                }
-            }
-
-            try {
-                this.loading = true;
-                const response = await axios(options);
-                if (response.data.status) {
-                    this.swalToast("success", response.data.text);
-                    await this.getAllAdmin(8);
-                }
-            } catch (error) {
-                // //console.log(error);
-                if (error.response) {
-                    if (error.response.status == 400) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 401) {
-                        const errorMsg = "User not Authorized";
-                        this.swalToast("error", errorMsg);
-                        window.location = `${this.baseUrl}admin/login.php`;
-
-                        this.token = null;
-                        return
-                    }
-
-                    if (error.response.status == 405) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 500) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-                }
-
-                this.swalToast("error", error.message || "Error processing request")
-
-
-            } finally {
-                this.loading = false;
-            }
-        },
-        async deleteAdmin(id) {
-            let data = new FormData();
-            data.append('id', id);
-
-            const url = `${this.baseUrl}api/admin/deleteAdmin.php`;
-
-            const options = {
-                method: "POST",
-                data: data,
-                headers: {
-                    //"Content-type": "application/json",
-                    "Authorization": `Bearer ${this.token}`
-                },
-                url
-            }
-            try {
-                const response = await axios(options);
-                if (response.data.status) {
-                    this.swalToast("success", response.data.text)
-                }
-            } catch (error) {
-                // //console.log(error);
-                if (error.response) {
-                    if (error.response.status == 400) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 401) {
-                        const errorMsg = "User not Authorized";
-                        this.swalToast("error", errorMsg);
-                        window.location = `${this.baseUrl}admin/login.php`;
-
-                        this.token = null;
-                        return
-                    }
-
-                    if (error.response.status == 405) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 500) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-                }
-
-                this.swalToast("error", error.message || "Error processing request")
-
-
-            } finally {
-                this.loading = false;
-            }
-        },
-
-        // export sheet to excel
-        async exportToExcel() {
-
-            if (this.daily) {
-                this.time_sort_value = "Daily";
-            } else if (this.weekly) {
-                this.time_sort_value = "Weekly";
-            } else if (this.monthly) {
-                this.time_sort_value = "Monthly";
-            } else {
-                this.time_sort_value = "All time";
-            }
-
-            let daily = (this.daily != null) ? `&sortDaily=1` : "";
-            let weekly = (this.weekly != null) ? `&sortWeekly=1` : "";
-            let monthly = (this.monthly) ? `&sortMonthly=1` : "";
-            let sortDisco = (this.sortDiscos) ? `&disco_id=${this.sortDiscos}` : "";
-            let sortValue = (this.sort != null) ? `&sortstatus=${this.sort}` : "";
-            let exportPage = (this.currentExportPage != null) ? `&page=${this.currentExportPage}` : 1;
-            let exportPerPage = (this.exportPer_page != null) ? `&noPerPage=${this.exportPer_Page}` : 100;
-
-            const url = `${this.baseUrl}api/export_Excel.php?p=1${daily}${weekly}${monthly}${sortDisco}${sortValue}${exportPage}${exportPerPage}`;
-            window.location = url
-
-            const options = {
-                method: "GET",
-                data: data,
-                url,
-                headers: {
-                    //"Content-type": "application/json",
-                    "Authorization": `Bearer ${this.token}`
-                }
-            }
-            try {
-                this.loading = true;
-                const response = await axios(options);
-                if (response.data.status) {
-                    this.swalToast("success", response.data.text);
-
-                }
-            } catch (error) {
-                if (error.response) {
-                    if (error.response.status == 400) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 401) {
-                        const errorMsg = "User not Authorized";
-                        this.swalToast("error", errorMsg);
-                        window.location = `${this.baseUrl}admin/login.php`;
-
-                        this.token = null;
-                        return
-                    }
-
-                    if (error.response.status == 405) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 500) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-                }
-
-                this.swalToast("error", error.message || "Error processing request")
-
-
-            } finally {
-                this.loading = false;
-            }
-
-
-        },
-        // Cash Back
-        async getAllCashBack(load = 1) {
-
-            let search = (this.search) ? `&search=${this.search}` : '';
-            let sort = (this.sort != null) ? `&sortStatus=${this.sort}` : "";
-            let page = (this.currentPage) ? this.currentPage : 1;
-            let noPerPage = (this.per_page) ? this.per_page : 10;
-            const url = `${this.baseUrl}api/accounts/get_all_cashback.php?noPerPage=${noPerPage}&page=${page}${search}${sort}`;
-            const options = {
-                method: "GET",
-                headers: {
-                    //"Content-type": "application/json",
-                    "Authorization": `Bearer ${this.token}`
-                },
-                url
-            }
-            try {
-                if (load == 1) {
-                    this.loading = true;
-                }
-                const response = await axios(options);
-                if (response.data.status) {
-                    this.cashBank = response.data.data.cashBank;
-                    this.currentPage = response.data.data.page;
-                    this.totalData = response.data.data.total_data;
-                    this.totalPage = response.data.data.totalPage;
-                } else {
-                    this.cashBank = null;
-                    this.currentPage = 0;
-                    this.totalData = 0;
-                    this.totalPage = 0;
-                }
-            } catch (error) {
-                // //console.log(error);
-                if (error.response) {
-                    if (error.response.status == 400) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 401) {
-                        const errorMsg = "User not Authorized";
-                        this.swalToast("error", errorMsg);
-                        window.location = `${this.baseUrl}admin/login.php`;
-                        return
-                    }
-
-                    if (error.response.status == 405) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 500) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-                }
-
-                this.swalToast("error", error.message || "Error processing request")
-
-
-            } finally {
-                this.loading = false;
-            }
-        },
+      
         //USERS
         async setUserRegMethod(method) {
             window.localStorage.setItem("reg_method", method);
@@ -7428,8 +6769,8 @@ let app = Vue.createApp({
         }
 
 
-        if (webPage === 'users.php' || webPage === 'users') {
-            await this.getAllUsers();
+        if (webPage === 'staff-pupil.php' || webPage === 'staff-pupil') {
+            await this.getAllPupils();
         }
 
         if (webPage === 'users_meter.php' || webPage === 'users_meter') {

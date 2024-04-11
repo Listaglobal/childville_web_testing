@@ -54,6 +54,7 @@ class API_User_Response
     public static $bannedAccount = "Your account has been banned";
     public static $userNotAllowed = "User not allowed";
     public static $deletedAccount = "(401) Your account has been deleted";
+    public static $errorAdded = "Error Occured";
 
     // image too large
     public static $invalidImageSent = "Invalid image sent";
@@ -63,6 +64,7 @@ class API_User_Response
     public static $unknownErrorImgeUpload = "The uploaded file exceeds the maximum file size allowed by the server.";
     public static $imageUploadFailed = "Error uploading image";
     public static $insertAllFields = "Please Insert correct data";
+    public static $imageNotSent = "Image not sent";
 
     //  login fail  
     public  static $loginFailedError = "one or both of the data provided is invalid";

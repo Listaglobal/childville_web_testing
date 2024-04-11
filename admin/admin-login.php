@@ -69,7 +69,7 @@
                                                 </div>
 
                                                 <div class="mt-4">
-                                                    <button class="btn btn-primary w-100 py-3" type="submit">Staff Login</button>
+                                                    <button class="btn btn-primary w-100 py-3" type="submit">Admin Login</button>
                                                 </div>
                                             </form>
                                         </div>

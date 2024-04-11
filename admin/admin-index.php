@@ -39,44 +39,6 @@
                                                             <div class="card-body">
                                                                 <div class="d-sm-flex justify-content-between align-items-start">
                                                                     <div>
-                                                                        <h4 class="card-title card-title-dash">Performance Overview</h4>
-                                                                        <p class="card-subtitle card-subtitle-dash">Know Your Performance</p>
-                                                                    </div>
-                                                                    <div>
-                                                                        <div class="dropdown">
-                                                                            <button class="btn btn-light dropdown-toggle toggle-dark btn-lg mb-0 me-0" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> This month </button>
-                                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                                                                <h6 class="dropdown-header">Settings</h6>
-                                                                                <a class="dropdown-item" href="#">Last Month</a>
-                                                                                <a class="dropdown-item" href="#">Last Week</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="d-sm-flex align-items-center mt-1 justify-content-between">
-                                                                    <div class="d-sm-flex align-items-center mt-4 justify-content-between">
-                                                                        <h2 class="me-2 fw-bold"></h2>
-                                                                        <h4 class="me-2"></h4>
-                                                                        <h4 class="text-success"></h4>
-                                                                    </div>
-                                                                    <div class="me-3">
-                                                                        <div id="marketingOverview-legend"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="chartjs-bar-wrapper mt-3">
-                                                                    <canvas id="marketingOverview"></canvas>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row flex-grow">
-                                                    <div class="col-12 grid-margin stretch-card">
-                                                        <div class="card card-rounded">
-                                                            <div class="card-body">
-                                                                <div class="d-sm-flex justify-content-between align-items-start">
-                                                                    <div>
                                                                         <h4 class="card-title card-title-dash">Child Ville Pupils</h4>
                                                                     </div>
                                                                     

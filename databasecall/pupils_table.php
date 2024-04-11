@@ -29,7 +29,7 @@ class PuPils_Table extends Config\DB_Connect
     public static $baseurl = Constants::APP_BASE_URL;
     public static $assetUrl = Constants::APP_ASSET_PATH . "pupils/";
     private static $minId = 0;
-    public static $path = "pupils/";
+    public static $imagePath = "pupils/";
 
     public static function addPuPils($data)
     {
@@ -47,13 +47,73 @@ class PuPils_Table extends Config\DB_Connect
         }
 
 
-        $insertQuery = "INSERT INTO `pupils`(`trackid`, `status`,`fullName`, `parentEmail`, `image`, `parentName`, `pcontant`, `age`, `DOB`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $insertQuery = "INSERT INTO `pupils`(`trackid`, `status`,`fullName`, `class`, `parentEmail`, `image`, `parentName`, `pcontant`, `age`, `DOB`) VALUES (?, ?, ?, ?,?, ?, ?, ?, ?, ?)";
         $stmt = $connect->prepare($insertQuery);
         $stmt->bind_param("ss$paramString", $trackid, $status, ...$params);
         $executed = $stmt->execute();
 
         if ($executed) {
             return true;
+        }
+
+        return false;
+    }
+
+    public static function getallPupils($page, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params)
+    {
+        //input type checks if its from post request or just normal function call
+        $connect = static::getDB();
+        $alldata = [];
+
+        $tableName = self::tableName;
+
+        // SELECT * FROM `pupils` WHERE 1
+
+        $query = "SELECT * FROM $tableName WHERE $tableName.id > ? $sortQuery $searchQuery";
+        $checkdata = $connect->prepare($query);
+        $checkdata->bind_param("s$paramString", self::$minId, ...$params);
+        $checkdata->execute();
+        $result = $checkdata->get_result();
+        $total_numRow = $result->num_rows;
+        $total_pages = ceil($total_numRow / $noPerPage);
+
+        $paramString .= "ss";
+        $params[] = $offset;
+        $params[] = $noPerPage;
+
+        $query = "$query ORDER BY $tableName.id DESC LIMIT ?,?";
+       
+        $checkdata = $connect->prepare($query);
+        $checkdata->bind_param("s$paramString", self::$minId, ...$params);
+        $checkdata->execute();
+        $result = $checkdata->get_result();
+        $numRow = $result->num_rows;
+
+        if ($numRow > 0) {
+
+            while ($row = $result->fetch_assoc()) {
+                $row['id'] = $row['trackid'];
+
+                $fullDate = Utility_Functions::gettheTimeAndDate(strtotime($row['created_at']));
+
+                $row['created_at'] = $fullDate;
+
+                unset($row['updated_at']);
+
+                $data = json_decode(json_encode($row), true);
+
+                array_push($alldata, $data);
+            }
+
+            $results = [
+                'page' => $page,
+                'per_page' => $noPerPage,
+                'total_data' => $total_numRow,
+                'totalPage' => $total_pages,
+                'pupils' => $alldata
+            ];
+
+            return $results;
         }
 
         return false;

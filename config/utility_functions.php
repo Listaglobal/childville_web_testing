@@ -609,9 +609,9 @@ class Utility_Functions  extends DB_Connect
                 if (in_array($img_ex_lc, $allowed_exs)) {
                     $folderPath = realpath(dirname(__DIR__));
                     $path = $folderPath . "../assets/images/$path/";
-                    if ( !is_dir($path) ){
-                        mkdir("$path", 0777, true);
-                    }
+                    // if ( !is_dir($path) ){
+                    //     mkdir("$path", 0777, true);
+                    // }
                     $new_img_name = uniqid( self::$systemInitials. "-", true). "." . $img_ex_lc;
                     $img_upload_path =  $path. $new_img_name;
                     move_uploaded_file($tmp_name, $img_upload_path);

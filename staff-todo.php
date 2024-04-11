@@ -2,150 +2,75 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>ChildVille Admin Profile Access </title>
-    <link rel="stylesheet" href="../assets/vendors/feather/feather.css">
-    <link rel="stylesheet" href="../assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../assets/vendors/ti-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="../assets/vendors/typicons/typicons.css">
-    <link rel="stylesheet" href="../assets/vendors/simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="../assets/vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="../assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-    <link rel="stylesheet" type="text/css" href="../assets/js/select.dataTables.min.css">
-    <link rel="stylesheet" href="../assets/css/vertical-layout-light/style.css">
-    <link rel="shortcut icon" href="../asset/img/Logo2.png" />
+    <?php include 'includes/staff-header-link.php' ?>
 </head>
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
 
-<body class="with-welcome-text">
+
+<body id="staff" v-cloak class="with-welcome-text">
     <div class="container-scroller">
-        <?php include 'includes/admin-header.php' ?>
+        <?php include 'includes/staff-header.php' ?>
         <div class="container-fluid page-body-wrapper">
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
-                <?php include 'includes/admin-sidebar.php' ?>
+                <?php include 'includes/staff-sidebar.php' ?>
             </nav>
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="row">
-                        <div class="col-sm-12">
-                            <div class="home-tab">
-                                <div class="row flex-grow">
-                                    <div class="col-12 grid-margin stretch-card">
-                                        <div class="card card-rounded">
-                                            <div class="card-body">
-                                                <div class="d-sm-flex justify-content-between align-items-start">
-                                                    <div>
-                                                        <h4 class="card-title card-title-dash">Child Ville Staff Task To Do</h4>
-                                                    </div>
-                                                </div>
-                                                <div class="table-responsive  mt-1">
-                                                    <table class="table select-table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>PuPils Name</th>
-                                                                <th>Sex</th>
-                                                                <th>Parents Contact</th>
-                                                                <th>Status</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex ">
-                                                                        <img src="assets/images/faces/face1.jpg" alt="">
-                                                                        <div>
-                                                                            <h6>Brandon Washington</h6>
-                                                                            <p></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <h6>Female</h6>
-                                                                </td>
-                                                                <td>
-                                                                    <div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p class="text-success">+23729474</p>
-                                                                        </div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p>Washington James</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="badge badge-opacity-success">Active</div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex ">
-                                                                        <img src="assets/images/faces/face1.jpg" alt="">
-                                                                        <div>
-                                                                            <h6>Brandon Washington</h6>
-                                                                            <p></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <h6>Female</h6>
-                                                                </td>
-                                                                <td>
-                                                                    <div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p class="text-success">+23729474</p>
-                                                                        </div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p>Washington James</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="badge badge-opacity-success">Active</div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex ">
-                                                                        <img src="assets/images/faces/face1.jpg" alt="">
-                                                                        <div>
-                                                                            <h6>Brandon Washington</h6>
-                                                                            <p></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <h6>Female</h6>
-                                                                </td>
-                                                                <td>
-                                                                    <div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p class="text-success">+23729474</p>
-                                                                        </div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p>Washington James</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="badge badge-opacity-success">Active</div>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Goals</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Goals</th>
+                                                    <th> Status</th>
+                                                    <th> </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>May 15, 2015 </td>
+                                                    <td>Achieve the Set object of child Ville</td>
+                                                    <td>
+                                                        <div class="badge badge-opacity-success me-3">Done</div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>May 15, 2015 </td>
+                                                    <td>Achieve the Set object of child Ville</td>
+                                                    <td>
+                                                        <div class="badge badge-opacity-danger me-3">Not Done</div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>May 15, 2015 </td>
+                                                    <td>Achieve the Set object of child Ville</td>
+                                                    <td>
+                                                        <div class="badge badge-opacity-success me-3">Done</div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- content-wrapper ends -->
             </div>
         </div>
     </div>
-    <?php include 'includes/admin-footer.php' ?>
 
+    <?php include 'includes/staff-footer.php' ?>
 </body>
 
 </html>

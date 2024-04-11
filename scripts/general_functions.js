@@ -5,7 +5,7 @@ class GeneralFunction {
     logoutUrl = "";
     apiUrl = "";
 
-    constructor({ apiPath = " ", logoutUrl = "staff-login.php", live_or_local = 0 } = {}) {
+    constructor({ apiPath = "", logoutUrl = "staff-login.php", live_or_local = 0 } = {}) {
         this.local = `http://localhost/childville_web/`;
         this.live = `https://childville.com/`;
         this.baseurl = live_or_local === 0 ? this.local : this.live;

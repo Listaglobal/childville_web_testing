@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../config/bootstrap_file.php';
+require_once '../../../config/bootstrap_file.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check for authorization
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     $age = " ";
     if (isset($_POST['age'])) {
-        $age = $utility_class_call::escape($_POST[' ']->age);
+        $age = $utility_class_call::escape($_POST['age']);
     }
 
     $dob = " ";
@@ -33,9 +33,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $dob = $utility_class_call::escape($_POST['dob']);
     }
 
+    $class = " ";
+    if (isset($_POST['class'])) {
+        $class = $utility_class_call::escape($_POST['class']);
+    }
+
     $image = " ";
     if (isset($_FILES['image'])) {
-        $image = $utility_class_call::escape($_FILES['image']);
+        $image = $_FILES['image'];
     }
 
     $parentName = " ";
@@ -85,24 +90,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if ($image) {
-        $path = $orderTableClassCall::$imagePath;
-        $pdfUploaded = $utility_class_call::uploadImage($image, $path);
+        $path = $pupilsDBCall::$imagePath;
+        $imageUploaded = $utility_class_call::uploadImage($image, $path);
     }
 
     //inserting into Database 
     $data = [
         "fullName" => $fullName,
-        "age" => $age,
-        "dob" => $dob,
+        "class" => $class,
+        "parentEmail" => $parentEmail,
+        "image" => $imageUploaded,
         "parentName" => $parentName,
         "parentContact" => $parentContact,
-        "parentEmail" => $parentEmail,
-        "image" => $imageUploaded
+        "age" => $age,
+        "dob" => $dob,
     ];
 
     $addPuPils = $pupilsDBCall::addPuPils($data);
 
-    if (!$addUser) {
+    if (!$addPuPils) {
         $text = $api_response_class_call::$errorAdded;
         $errorcode = $api_error_code_class_call::$internalUserWarning;
         $maindata = [];
