@@ -63,6 +63,8 @@ $usersTableClassCall= new DatabaseCall\Users_Table;
 $api_admin_table_class_call= new DatabaseCall\Admin_Table;
 $adminLevelDBCall = new DatabaseCall\Admin_Level_Table;
 $pupilsDBCall = new DatabaseCall\PuPils_Table;
+$payrollDBCall = new DatabaseCall\PayRoll_Table;
+
 
 
 // Set the error and exception handlers using the instance of UtilsFunctions

@@ -1272,6 +1272,10 @@ let app = Vue.createApp({
             await this.getAllStaff();
         }
 
+        if (webPage === 'admin-pay.php' || webPage === 'admin-pay') {
+            await this.getAllStaff();
+        }
+
     }
 })
 
