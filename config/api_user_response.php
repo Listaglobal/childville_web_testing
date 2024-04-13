@@ -137,5 +137,8 @@ class API_User_Response
 
     //events 
     public static $eventCreated = "Event Created Succesfully";
+
+    //review 
+    public static $reviewdone = "Staff Review Done";
     
 }

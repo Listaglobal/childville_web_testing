@@ -160,6 +160,9 @@ let app = Vue.createApp({
 
             //events
             event: null,
+
+            // review 
+            review: null,
         }
     },
     methods: {
@@ -387,9 +390,30 @@ let app = Vue.createApp({
             });
         },
 
+        //review
+        async getAllReview(load = 1) {
+            let search = (this.search) ? `&search=${this.search}` : "";
+            let page = (this.currentPage) ? this.currentPage : 1;
+            let per_page = (this.per_page) ? this.per_page : 20;
+            const url = `review/getStaffReview.php?page=${page}&per_page=${per_page}${search}`;
+            let headers = {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            };
 
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
 
+                if (!successData) {
+                    return;
+                }
+                this.review = successData.review;
+                this.currentPage = successData.page;
+                this.totalPage = successData.totalPage;
+                this.per_page = successData.per_page;
+                this.totalData = successData.total_data;
 
+            });
+        },
 
       
         //USERS
@@ -919,8 +943,11 @@ let app = Vue.createApp({
         if (webPage === 'staff-event.php' || webPage === 'staff-event') {
             await this.getAllEvent();
         }
-        
 
+        if (webPage === 'staff-performance.php' || webPage === 'staff-performance') {
+            await this.getAllReview();
+        }
+        
     }
 })
 

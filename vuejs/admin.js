@@ -171,6 +171,13 @@ let app = Vue.createApp({
             date: null,
             event: null,
 
+            // review 
+            review: null,
+            status: null,
+            user_id: null,
+            review_by: null,
+            review: null,
+
         }
     },
     methods: {
@@ -1341,6 +1348,57 @@ let app = Vue.createApp({
             }, 2);
         },
 
+        //review
+        async getAllReview(load = 1) {
+            let search = (this.search) ? `&search=${this.search}` : "";
+            let page = (this.currentPage) ? this.currentPage : 1;
+            let per_page = (this.per_page) ? this.per_page : 20;
+            const url = `review/getAllReview.php?page=${page}&per_page=${per_page}${search}`;
+            let headers = {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            };
+
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
+
+                if (!successData) {
+                    return;
+                }
+                this.review = successData.review;
+                this.currentPage = successData.page;
+                this.totalPage = successData.totalPage;
+                this.per_page = successData.per_page;
+                this.totalData = successData.total_data;
+
+            });
+        },
+
+        async addReview() {
+            let data = {
+                "user_id" : this.user_id,
+                "review_by" : this.review_by,
+                "review": this.review,
+                "status": this.status             
+            }
+
+            const url = `review/addReview.php`;
+
+            const headers = {
+                "Authorization": `Bearer ${this.token}`
+            }
+
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getAllReview();
+                    document.getElementById("_closedisco").click();
+                    this.user_id = this.review_by = this.review = this.status = null;
+                } 
+            }, 2);
+        },
+
+
+
+
 
 
     },
@@ -1386,6 +1444,10 @@ let app = Vue.createApp({
         if (webPage === 'admin-pay.php' || webPage === 'admin-pay') {
             await this.getAllStaff();
             await this.getAllPayrolls();
+        }
+        if (webPage === 'admin-review.php' || webPage === 'admin-review') {
+            await this.getAllStaff();
+            await this.getAllReview();
         }
 
         

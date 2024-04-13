@@ -26,42 +26,26 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Perfomance and Review </h4>
                                     <div class="table-responsive">
-                                        <table class="table table-striped">
+                                        <table v-if="review" class="table table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>Review By</th>
                                                     <th>Date</th>
                                                     <th>Reviews</th>
                                                     <th>Performance Status</th>
-                                                    <th> </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>John Elton</td>
-                                                    <td>May 15, 2015 </td>
-                                                    <td>Change of Borad of Directors </td>
+                                                <tr v-for="(item, index) in review">
+                                                    <td>{{item.review_by}}</td>
+                                                    <td>{{item.created_at}} </td>
+                                                    <td>{{item.review}}</td>
                                                     <td>
-                                                        <div class="badge badge-opacity-warning me-3">Avarage</div>
+                                                        <div v-if="item.status == 1" class="badge badge-opacity-success me-3">Good</div>
+                                                        <div v-if="item.status == 2" class="badge badge-opacity-warning me-3">Average</div>
+                                                        <div v-if="item.status == 3" class="badge badge-opacity-danger me-3">Bad</div>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>John Elton</td>
-                                                    <td>May 15, 2015 </td>
-                                                    <td>Change of Borad of Directors </td>
-                                                    <td>
-                                                        <div class="badge badge-opacity-success me-3">Good</div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>John Elton</td>
-                                                    <td>May 15, 2015 </td>
-                                                    <td>Change of Borad of Directors </td>
-                                                    <td>
-                                                        <div class="badge badge-opacity-danger me-3">Bad</div>
-                                                    </td>
-                                                </tr>
-                                                
                                             </tbody>
                                         </table>
                                     </div>
