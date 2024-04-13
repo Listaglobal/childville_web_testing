@@ -27,54 +27,30 @@
                                     <div class="card-body">
                                         <h4 class="card-title">Pay Roll </h4>
                                         <div class="table-responsive">
-                                            <table class="table table-striped">
+                                            <table v-if="payroll" class="table table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th> User </th>
-                                                        <th> Month </th>
-                                                        <th> Tax </th>
-                                                        <th> Amount </th>
-                                                        <th> Created By </th>
+                                                        <th>User</th>
+                                                        <th>Month</th>
+                                                        <th>Date Sent</th>
                                                         <th> </th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
+                                                    <tr v-for="() in payroll">
                                                         <td class="py-1">
                                                             <img src="asset/img/img4.jpg" alt="image" />
+                                                            <div class="mt-3 text-align-center">
+                                                                <h6>{Brandon Washington}</h6>
+                                                            </div>
                                                         </td>
                                                         <td>May 15, 2015 </td>
-                                                        <td>$18 </td>
-                                                        <td>$77.99 </td>
                                                         <td> John Smith </td>
                                                         <td>
                                                             <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Download</a>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td class="py-1">
-                                                            <img src="asset/img/img2.jpg" alt="image" />
-                                                        </td>
-                                                        <td>May 15, 2015 </td>
-                                                        <td>$18 </td>
-                                                        <td>$77.99 </td>
-                                                        <td> John Smith </td>
-                                                        <td>
-                                                            <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Download</a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="py-1">
-                                                            <img src="asset/img/img6.jpg" alt="image" />
-                                                        </td>
-                                                        <td>May 15, 2015 </td>
-                                                        <td>$18 </td>
-                                                        <td>$77.99 </td>
-                                                        <td> John Smith </td>
-                                                        <td>
-                                                            <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Download</a>
-                                                        </td>
-                                                    </tr>
+
                                                 </tbody>
                                             </table>
                                         </div>

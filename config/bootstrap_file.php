@@ -64,6 +64,8 @@ $api_admin_table_class_call= new DatabaseCall\Admin_Table;
 $adminLevelDBCall = new DatabaseCall\Admin_Level_Table;
 $pupilsDBCall = new DatabaseCall\PuPils_Table;
 $payrollDBCall = new DatabaseCall\PayRoll_Table;
+$eventDBCall = new DatabaseCall\Event_Table;
+
 
 
 

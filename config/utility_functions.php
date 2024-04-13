@@ -672,7 +672,7 @@ class Utility_Functions  extends DB_Connect
                 if ( $checkExt  ){
                     if (in_array($file_ex_lc, $allowed_exs)) {
                         $folderPath = realpath(dirname(__DIR__));
-                        $path = $folderPath."/assets/files/$path/";
+                        $path = $folderPath."/assets/images/$path/";
                         // $path = "../../assets/images/$path/";
                         if ( !is_dir($path) ){
                             mkdir("$path", 0777, true);

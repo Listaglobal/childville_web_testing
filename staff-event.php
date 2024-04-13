@@ -25,48 +25,33 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Check Out Event </h4>
-                                    <div class="table-responsive">
-                                        <table class="table table-striped">
+                                    <div v-if="event" class="table-responsive  mt-1">
+                                        <table class="table select-table">
                                             <thead>
                                                 <tr>
-                                                    <th>Name of Event</th>
-                                                    <th>Date</th>
-                                                    <th>Time</th>
-                                                    <th>Location</th>
-                                                    <th>Status</th>
-                                                    <th> </th>
+                                                    <th>Event Name</th>
+                                                    <th>Event Venue</th>
+                                                    <th>Date And Time</th>
+                                                    <th>Event Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td> Change of Borad of Directors </td>
-                                                    <td>May 15, 2015 </td>
-                                                    <td>16:30 </td>
-                                                    <td>Main Hall</td>
+                                                <tr v-for="(item, index) in event">
                                                     <td>
-                                                        <div class="badge badge-opacity-warning me-3">Due tomorrow</div>
+                                                        <h6>{{item.topic}}</h6>
                                                     </td>
-                                                    <!-- <td> John Smith </td> -->
-                                                </tr>
-                                                <tr>
-                                                    <td> Change of Borad of Directors </td>
-                                                    <td>May 15, 2015 </td>
-                                                    <td>16:30 </td>
-                                                    <td>Main Hall</td>
                                                     <td>
-                                                        <div class="badge badge-opacity-success me-3">Done</div>
+                                                        <h6>{{item.venue}}</h6>
                                                     </td>
-                                                    <!-- <td> John Smith </td> -->
-                                                </tr>
-                                                <tr>
-                                                    <td> Change of Borad of Directors </td>
-                                                    <td>May 15, 2015</td>
-                                                    <td>16:30 </td>
-                                                    <td>Main Hall</td>
                                                     <td>
-                                                        <div class="badge badge-danger me-3">Cancelled</div>
+                                                        <h6>{{item.date}}</h6>
                                                     </td>
-                                                    <!-- <td> John Smith </td> -->
+
+                                                    <td>
+                                                        <div v-if="item.status == 1" class="badge badge-opacity-warning">Coming Up Soon</div>
+                                                        <div v-if="item.status == 2" class="badge badge-opacity-success">Event Done</div>
+                                                        <div v-if="item.status == 3" class="badge badge-opacity-warning">Event Cancelled</div>
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>

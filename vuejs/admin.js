@@ -159,7 +159,17 @@ let app = Vue.createApp({
 
 
             // pupils
-            pupils : null,
+            pupils: null,
+            
+            //payroll
+            month: null, 
+            user_id: null,
+
+            //events
+            topic: null, 
+            venue: null,
+            date: null,
+            event: null,
 
         }
     },
@@ -1235,6 +1245,103 @@ let app = Vue.createApp({
             });
         },
 
+        //payroll
+        async addPayroll() {
+            let data = {
+                "user_id" : this.user_id,
+                "file" : this.imageSent,
+                "month" : this.month,
+            }
+
+            const url = `payroll/addpayroll.php`;
+
+            const headers = {
+                "Authorization": `Bearer ${this.token}`
+            }
+
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getAllPayrolls();
+                    document.getElementById("_closedisco").click();
+                    this.user_id = this.imageSent = this.month = null;
+                } 
+            }, 2);
+        },
+        async getAllPayrolls(load = 1) {
+            let search = (this.search) ? `&search=${this.search}` : "";
+            let page = (this.currentPage) ? this.currentPage : 1;
+            let per_page = (this.per_page) ? this.per_page : 20;
+            let limit = (this.limit) ? `&limit=${this.limit}` : '';
+            const url = `payroll/getAllPayroll.php?page=${page}&per_page=${per_page}${search}${limit}`;
+            let headers = {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            };
+
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
+
+                if (!successData) {
+                    return;
+                }
+                this.payroll = successData.payroll;
+                this.currentPage = successData.page;
+                this.totalPage = successData.totalPage;
+                this.per_page = successData.per_page;
+                this.totalData = successData.total_data;
+
+            });
+        },
+
+        
+
+        // event
+        async getAllEvent(load = 1) {
+            let search = (this.search) ? `&search=${this.search}` : "";
+            let page = (this.currentPage) ? this.currentPage : 1;
+            let per_page = (this.per_page) ? this.per_page : 20;
+            const url = `events/getAllEvent.php?page=${page}&per_page=${per_page}${search}`;
+            let headers = {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            };
+
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
+
+                if (!successData) {
+                    return;
+                }
+                this.event = successData.event;
+                this.currentPage = successData.page;
+                this.totalPage = successData.totalPage;
+                this.per_page = successData.per_page;
+                this.totalData = successData.total_data;
+
+            });
+        },
+
+        async addEvent() {
+            let data = {
+                "topic" : this.topic,
+                "venue" : this.venue,
+                "date" : this.date,
+            }
+
+            const url = `events/addEvent.php`;
+
+            const headers = {
+                "Authorization": `Bearer ${this.token}`
+            }
+
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getAllEvent();
+                    document.getElementById("_closedisco").click();
+                    this.topic = this.venue = this.date = null;
+                } 
+            }, 2);
+        },
+
+
 
     },
     async beforeMount() {
@@ -1264,6 +1371,10 @@ let app = Vue.createApp({
             // this.getTopProductOrdered();
         }
 
+        if (webPage === 'admin-events.php' || webPage === 'admin-events') {
+            await this.getAllEvent();
+        }
+
         if (webPage === 'admin-pupils.php' || webPage === 'admin-pupils') {
             await this.getAllPupils();
         }
@@ -1274,7 +1385,10 @@ let app = Vue.createApp({
 
         if (webPage === 'admin-pay.php' || webPage === 'admin-pay') {
             await this.getAllStaff();
+            await this.getAllPayrolls();
         }
+
+        
 
     }
 })

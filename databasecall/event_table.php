@@ -12,7 +12,7 @@ use Config\Utility_Functions;
  *
  * PHP version 5.4
  */
-class PayRoll_Table extends Config\DB_Connect
+class Event_Table extends Config\DB_Connect
 {
     /**
      * Get all the posts as an associative array
@@ -25,12 +25,11 @@ class PayRoll_Table extends Config\DB_Connect
 
      */
     // APi functions
-    public const  tableName = "payroll";
+    public const  tableName = "events";
     public static $baseurl = Constants::APP_BASE_URL;
-    public static $assetUrl = Constants::APP_ASSET_PATH . "payroll/";
+    public static $assetUrl = Constants::APP_ASSET_PATH . "event/";
     private static $minId = 0;
-    public static $imagePath = "payroll/";
-    
+    // public static $imagePath = "payroll/";
 
     public static function addPayRoll($data)
     {
@@ -47,10 +46,11 @@ class PayRoll_Table extends Config\DB_Connect
         }
 
 
-        $insertQuery = "INSERT INTO `payroll`(`trackid`, `user_id`, `month`, `file`) VALUES (?, ?, ?, ?)";
+        $insertQuery = "INSERT INTO `payrolls`(`trackid`, `user_id`, `month`, `file`) VALUES (?, ?, ?, ?)";
         $stmt = $connect->prepare($insertQuery);
-        $stmt->bind_param("s$paramString", $trackid, ...$params);
+        $stmt->bind_param("ss$paramString", $trackid, ...$params);
         $executed = $stmt->execute();
+
         if ($executed) {
             return true;
         }
@@ -58,7 +58,7 @@ class PayRoll_Table extends Config\DB_Connect
         return false;
     }
 
-    public static function getAllPayroll($page, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params)
+    public static function getAllEvents($page, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params)
     {
         //input type checks if its from post request or just normal function call
         $connect = static::getDB();
@@ -68,9 +68,7 @@ class PayRoll_Table extends Config\DB_Connect
 
         // SELECT * FROM `payment` WHERE 1
 
-        // SELECT * FROM `payroll` LEFT JOIN users ON payroll.user_id = users.user_id WHERE users.user_id = "CHILDVILLE6X8KC"
-
-        $query = "SELECT * FROM `payroll` LEFT JOIN users ON payroll.user_id = users.user_id WHERE users.id > ? $sortQuery $searchQuery";
+        $query = "SELECT * FROM $tableName WHERE $tableName.id > ? $sortQuery $searchQuery";
         $checkdata = $connect->prepare($query);
         $checkdata->bind_param("s$paramString", self::$minId, ...$params);
         $checkdata->execute();
@@ -111,7 +109,7 @@ class PayRoll_Table extends Config\DB_Connect
                 'per_page' => $noPerPage,
                 'total_data' => $total_numRow,
                 'totalPage' => $total_pages,
-                'payroll' => $alldata
+                'event' => $alldata
             ];
 
             return $results;
@@ -120,4 +118,28 @@ class PayRoll_Table extends Config\DB_Connect
         return false;
     }
 
+    public static function addEvents($data)
+    {
+        $connect = static::getDB();
+        $trackid =  Utility_Functions::generateUniqueShortKey("events", "trackid");
+        $status = 1;
+        // 1 - upcoming , 2 - completed, 3 - cancelled
+
+        $params = [];
+        $paramString = "";
+        foreach ($data as $key => $val) {
+            $params[] = $val;
+            $paramString .= "s";
+        }
+
+        $query = "INSERT INTO `events`( `trackid`, `status`, `topic`, `venue`, `date`) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $connect->prepare($query);
+        $stmt->bind_param("ss$paramString", $trackid, $status, ...$params);
+        $executed = $stmt->execute();
+        if ($executed) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -19,25 +19,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // data sent in the request
-    $user_id = " ";
-    if (isset($_POST['user_id'])) {
-        $user_id = $utility_class_call::escape($_POST['user_id']);
+    $topic = " ";
+    if (isset($_POST['topic'])) {
+        $topic = $utility_class_call::escape($_POST['topic']);
     }
 
-    $month = " ";
-    if (isset($_POST['month'])) {
-        $fname = $utility_class_call::escape($_POST['month']);
+    $venue = " ";
+    if (isset($_POST['venue'])) {
+        $venue = $utility_class_call::escape($_POST['venue']);
     }
 
-    $file = " ";
-    if (isset($_FILES['file'])) {
-        $file = $_FILES['file'];
+    $date = " ";
+    if (isset($_POST['date'])) {
+        $date = $utility_class_call::escape($_POST['date']);
     }
-
 
     // checking all paramater are passed
 
-    if ( $utility_class_call::validate_input($user_id) || $utility_class_call::validate_input($month)) {
+    if ( $utility_class_call::validate_input($topic) || $utility_class_call::validate_input($venue) || $utility_class_call::validate_input($date) 
+    ) {
         $text = $api_response_class_call::$invalidDataSent;
         $errorcode = $api_error_code_class_call::$internalUserWarning;
         $maindata = [];
@@ -46,32 +46,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $api_status_code_class_call->respondBadRequest($maindata, $text, $hint, $linktosolve, $errorcode);
     }
 
-
-    $imageUploaded = "";
-    if (!is_array($file)) {
-        $text = $api_response_class_call::$imageNotSent;
-        $errorcode = $api_error_code_class_call::$internalUserWarning;
-        $maindata = [];
-        $hint = ["Ensure to the right user with right access add forum."];
-        $linktosolve = "https://";
-        $api_status_code_class_call->respondBadRequest($maindata, $text, $hint, $linktosolve, $errorcode);
-    }
-
-    if ($file) {
-        $path = $payrollDBCall::$imagePath;
-        $imageUploaded = $utility_class_call::uploadDocumentFile($file, $path);
-    }
-
     //inserting into Database 
     $data = [
-        "user_id" => $user_id,
-        "month" => $month,
-        "file" => $imageUploaded,
+        "topic" => $topic,
+        "venue" => $venue,
+        "date" => $date,
     ];
 
-    $addPayroll = $payrollDBCall::addPayroll($data);
+    $EventAdded = $eventDBCall::addEvents($data);
 
-    if (!$addPayroll) {
+    if (!$EventAdded) {
         $text = $api_response_class_call::$errorAdded;
         $errorcode = $api_error_code_class_call::$internalUserWarning;
         $maindata = [];
@@ -80,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $api_status_code_class_call->respondBadRequest($maindata, $text, $hint, $linktosolve, $errorcode);
     }
     $maindata = [];
-    $text = $api_response_class_call::$payroll;
+    $text = $api_response_class_call::$eventCreated;
     $api_status_code_class_call->respondOK($maindata, $text);
 } else {
     $text = $api_response_class_call::$methodUsedNotAllowed;

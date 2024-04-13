@@ -131,5 +131,11 @@ class API_User_Response
 
     //pupils 
     public static $pupilsAddedd = "Pupils Added Succesfully";
+
+    //payroll
+    public static $payroll = "Staff PayRoll Sent";
+
+    //events 
+    public static $eventCreated = "Event Created Succesfully";
     
 }
