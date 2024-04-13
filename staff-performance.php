@@ -48,6 +48,12 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        <div v-if="!review" class="noresult">
+                                            <div class="text-center">
+                                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px"></lord-icon>
+                                                <h5 class="mt-2">No Review Yet</h5>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

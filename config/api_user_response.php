@@ -140,5 +140,8 @@ class API_User_Response
 
     //review 
     public static $reviewdone = "Staff Review Done";
+
+    //goal 
+    public static $staffGoal = "Staff Goal Added Created";
     
 }

@@ -12,7 +12,7 @@ use Config\Utility_Functions;
  *
  * PHP version 5.4
  */
-class Event_Table extends Config\DB_Connect
+class Goal_Table extends Config\DB_Connect
 {
     /**
      * Get all the posts as an associative array
@@ -25,13 +25,13 @@ class Event_Table extends Config\DB_Connect
 
      */
     // APi functions
-    public const  tableName = "events";
+    public const  tableName = "goal";
     public static $baseurl = Constants::APP_BASE_URL;
-    public static $assetUrl = Constants::APP_ASSET_PATH . "event/";
+    public static $assetUrl = Constants::APP_ASSET_PATH . "goal/";
     private static $minId = 0;
     // public static $imagePath = "payroll/";
 
-    public static function getAllEvents($page, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params)
+    public static function getAllGoal($page, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params)
     {
         //input type checks if its from post request or just normal function call
         $connect = static::getDB();
@@ -41,7 +41,7 @@ class Event_Table extends Config\DB_Connect
 
         // SELECT * FROM `payment` WHERE 1
 
-        $query = "SELECT * FROM $tableName WHERE $tableName.id > ? $sortQuery $searchQuery";
+        $query = "SELECT * FROM $tableName LEFT JOIN users ON $tableName.user_id = users.user_id WHERE $tableName.id > ? $sortQuery $searchQuery";
         $checkdata = $connect->prepare($query);
         $checkdata->bind_param("s$paramString", self::$minId, ...$params);
         $checkdata->execute();
@@ -82,7 +82,7 @@ class Event_Table extends Config\DB_Connect
                 'per_page' => $noPerPage,
                 'total_data' => $total_numRow,
                 'totalPage' => $total_pages,
-                'event' => $alldata
+                'goal' => $alldata
             ];
 
             return $results;
@@ -91,12 +91,11 @@ class Event_Table extends Config\DB_Connect
         return false;
     }
 
-    public static function addEvents($data)
+    public static function addGoal($data)
     {
         $connect = static::getDB();
-        $trackid =  Utility_Functions::generateUniqueShortKey("events", "trackid");
+        $trackid =  Utility_Functions::generateUniqueShortKey("goal", "trackid");
         $status = 1;
-        // 1 - upcoming , 2 - completed, 3 - cancelled
 
         $params = [];
         $paramString = "";
@@ -105,7 +104,7 @@ class Event_Table extends Config\DB_Connect
             $paramString .= "s";
         }
 
-        $query = "INSERT INTO `events`( `trackid`, `status`, `topic`, `venue`, `date`) VALUES (?, ?, ?, ?, ?)";
+        $query = "INSERT INTO `goal`(`trackid`, `status`, `user_id`, `goal` ) VALUES (?, ?, ?, ?)";
         $stmt = $connect->prepare($query);
         $stmt->bind_param("ss$paramString", $trackid, $status, ...$params);
         $executed = $stmt->execute();
