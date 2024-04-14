@@ -38,7 +38,7 @@
                                     <div class="row flex-grow">
                                         <div class="col-12 grid-margin stretch-card">
                                             <div class="card card-rounded">
-                                                <div v-if="payroll" class="card-body">
+                                                <div class="card-body">
                                                     <div class="d-sm-flex justify-content-between align-items-start">
                                                         <div>
                                                             <h4 class="card-title card-title-dash">Child Ville Staff PayRoll</h4>
@@ -53,38 +53,24 @@
                                                                 <tr>
                                                                     <th>Staff</th>
                                                                     <th>Date Created</th>
+                                                                    <th>Month</th>
                                                                     <th>File</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
+                                                            <tbody v-if="payroll">
                                                                 <tr v-for="(item, index) in payroll">
                                                                     <td>
                                                                         <div class="d-flex ">
-                                                                            <img src="assets/images/faces/face1.jpg" alt="">
-                                                                            <div class="mt-3 text-align-center">
-                                                                                <h6>{Brandon Washington}</h6>
-                                                                            
+                                                                            <img v-if='item.profile_pic' :src="baseUrl +'/assets/images/staff/'+item.profile_pic" alt="Staff image" class="thumb __567788">
+                                                                            <div class="text-align-center mt-2 p-2">
+                                                                                <h6>{{item.fname}} {{item.lname}}</h6>
                                                                             </div>
                                                                         </div>
                                                                     </td>
-                                                                    <td>
-                                                                        <h6>Female</h6>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div>
-                                                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                                <p class="text-success">+23729474</p>
-                                                                            </div>
-                                                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                                <p>Washington James</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="badge badge-opacity-success">Active</div>
-                                                                    </td>
+                                                                    <td>{{item.created_at}}</td>
+                                                                    <td>{{item.month}}</td>
+                                                                    <td>{{item.file}}</td>
                                                                 </tr>
-
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -119,15 +105,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="form-label" for="oneapp">Select Staff </label>
-                                <div v-if="staff" class="form-control-wrap">
-                                    <select v-model="user_id" class="form-select" id="oneappcode" required>
-                                        <option value="null">Select Staff</option>
-                                        <option v-for="(item, index) in staff" :value="item.user_id">{{item.fname}} {{item.lname}}</option>
-                                    </select>
-                                </div>
-                            </div>
+
                             <div class="form-group">
                                 <label class="form-label" for="oneapp">Select PayRoll Month </label>
                                 <div class="form-control-wrap">
@@ -145,6 +123,16 @@
                                         <option value="October">October</option>
                                         <option value="November">November</option>
                                         <option value="December">December</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="oneapp">Select Staff </label>
+                                <div v-if="staff" class="form-control-wrap">
+                                    <select v-model="user_id" class="form-select" id="oneappcode" required>
+                                        <option value="null">Select Staff</option>
+                                        <option v-for="(item, index) in staff" :value="item.user_id">{{item.fname}} {{item.lname}}</option>
                                     </select>
                                 </div>
                             </div>

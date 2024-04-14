@@ -19,10 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     //pass sort params
     $params = [];
-    $status = 1;
-    $params[] = $status;
+    // $status = 1;
+    // $params[] = $status;
+    $params[] = $userid;
     $paramString = "s";
-    $sortQuery = ' AND ' . $reviewDBCall::tableName . '.status = ?';
+    $sortQuery = ' AND ' . $reviewDBCall::tableName . '.user_id = ?';
     $searchQuery = "";
     $single_post = false;
 

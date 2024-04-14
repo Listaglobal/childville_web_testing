@@ -67,6 +67,8 @@ $payrollDBCall = new DatabaseCall\PayRoll_Table;
 $eventDBCall = new DatabaseCall\Event_Table;
 $reviewDBCall = new DatabaseCall\Review_Table;
 $goalDBCall = new DatabaseCall\Goal_Table;
+$requestDBCall = new DatabaseCall\Request_Table;
+$taskDBCall = new DatabaseCall\Task_Table;
 
 
 

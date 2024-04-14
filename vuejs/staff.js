@@ -157,12 +157,21 @@ let app = Vue.createApp({
             //payroll
             month: null, 
             user_id: null,
+            payroll: null,
 
             //events
             event: null,
 
             // review 
             review: null,
+
+            //goal 
+            goal: null,
+
+            //request
+            request: null,
+            days: null,
+            reason: null,
         }
     },
     methods: {
@@ -210,7 +219,6 @@ let app = Vue.createApp({
         },
         async uploadImage(event) {
             this.imageSent = event.target.files[0];
-            console.log(this.imageSent);
         },
 
         async onLoading() {
@@ -414,6 +422,78 @@ let app = Vue.createApp({
 
             });
         },
+
+        //goal
+        async getAllGoal(load = 1) {
+            let search = (this.search) ? `&search=${this.search}` : "";
+            let page = (this.currentPage) ? this.currentPage : 1;
+            let per_page = (this.per_page) ? this.per_page : 20;
+            const url = `goal/getAllStaffGoal.php?page=${page}&per_page=${per_page}${search}`;
+            let headers = {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            };
+
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
+
+                if (!successData) {
+                    return;
+                }
+                this.goal = successData.goal;
+                this.currentPage = successData.page;
+                this.totalPage = successData.totalPage;
+                this.per_page = successData.per_page;
+                this.totalData = successData.total_data;
+
+            });
+        },
+
+        //request
+        async getAllRequest(load = 1) {
+            let search = (this.search) ? `&search=${this.search}` : "";
+            let page = (this.currentPage) ? this.currentPage : 1;
+            let per_page = (this.per_page) ? this.per_page : 20;
+            const url = `request/getStaffRequest.php?page=${page}&per_page=${per_page}${search}`;
+            let headers = {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            };
+
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
+
+                if (!successData) {
+                    return;
+                }
+                this.request = successData.request;
+                this.currentPage = successData.page;
+                this.totalPage = successData.totalPage;
+                this.per_page = successData.per_page;
+                this.totalData = successData.total_data;
+
+            });
+        },
+
+        async sendRequest() {
+            let data = {
+                "reason": this.reason,
+                "days": this.days
+            }
+
+            const url = `request/placeStaffRequest.php`;
+
+            const headers = {
+                "Authorization": `Bearer ${this.token}`
+            }
+
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getAllRequest();
+                    document.getElementById("_closedisco").click();
+                    this.reason = this.days  = null;
+                } 
+            }, 2);
+        },
+
 
       
         //USERS
@@ -946,6 +1026,18 @@ let app = Vue.createApp({
 
         if (webPage === 'staff-performance.php' || webPage === 'staff-performance') {
             await this.getAllReview();
+        }
+        
+        if (webPage === 'staff-goal.php' || webPage === 'staff-goal') {
+            await this.getAllGoal();
+        }
+
+        if (webPage === 'staff-pay.php' || webPage === 'staff-pay') {
+            await this.getAllPayrolls();
+        }
+
+        if (webPage === 'staff-request.php' || webPage === 'staff-request') {
+            await this.getAllRequest();
         }
         
     }

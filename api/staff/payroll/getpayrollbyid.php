@@ -15,14 +15,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $linktosolve = "https://";
         $api_status_code_class_call->respondUnauthorized($maindata, $text, $hint, $linktosolve, $errorcode);
     }
-    
+
 
     //pass sort params
     $params = [];
-    $status = 1;
-    $params[] = $status;
+    // $status = 1;
+    // $params[] = $status;
+    $params[] = $userid;
     $paramString = "s";
-    $sortQuery = ' AND ' . $payrollDBCall::tableName . '.status = ?';
+    $sortQuery = ' AND ' . $payrollDBCall::tableName . '.user_id = ?';
     $searchQuery = "";
     $single_post = false;
 
@@ -53,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     $offset = ($page_no - 1) * $noPerPage;
 
-    $allPayRoll = $pupilsDBCall::getPayRollByStaff($userid,$page_no, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params);
+    $allPayRoll = $payrollDBCall::getAllPayRoll($userid,$page_no, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params);
 
     if ($allPayRoll) {
         $maindata = $allPayRoll;

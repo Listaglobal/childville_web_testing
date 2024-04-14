@@ -176,10 +176,13 @@ let app = Vue.createApp({
             status: null,
             user_id: null,
             review_by: null,
-            review: null,
+            view: null,
 
             //goal
             goal: null,
+
+            //request
+            request: null,
 
         }
     },
@@ -1380,7 +1383,7 @@ let app = Vue.createApp({
             let data = {
                 "user_id" : this.user_id,
                 "review_by" : this.review_by,
-                "review": this.review,
+                "review": this.veiw,
                 "status": this.status             
             }
 
@@ -1447,6 +1450,31 @@ let app = Vue.createApp({
             }, 2);
         },
 
+        //request
+        async getAllRequest(load = 1) {
+            let search = (this.search) ? `&search=${this.search}` : "";
+            let page = (this.currentPage) ? this.currentPage : 1;
+            let per_page = (this.per_page) ? this.per_page : 20;
+            const url = `request/getAllRequest.php?page=${page}&per_page=${per_page}${search}`;
+            let headers = {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            };
+
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
+
+                if (!successData) {
+                    return;
+                }
+                this.request = successData.request;
+                this.currentPage = successData.page;
+                this.totalPage = successData.totalPage;
+                this.per_page = successData.per_page;
+                this.totalData = successData.total_data;
+
+            });
+        },
+
 
 
 
@@ -1504,6 +1532,11 @@ let app = Vue.createApp({
         if (webPage === 'admin-goal.php' || webPage === 'admin-goal') {
             await this.getAllStaff();
             await this.getAllGoal();
+        }
+
+        if (webPage === 'admin-request.php' || webPage === 'admin-request') {
+            await this.getAllStaff();
+            await this.getAllRequest();
         }
 
         

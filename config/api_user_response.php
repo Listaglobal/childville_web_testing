@@ -143,5 +143,8 @@ class API_User_Response
 
     //goal 
     public static $staffGoal = "Staff Goal Added Created";
+
+    //request
+    public static $requestSent = "Request Sent, Awaiting Approval";
     
 }

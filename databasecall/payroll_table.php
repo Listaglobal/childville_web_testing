@@ -47,7 +47,7 @@ class PayRoll_Table extends Config\DB_Connect
         }
 
 
-        $insertQuery = "INSERT INTO `payroll`(`trackid`, `user_id`, `month`, `file`) VALUES (?, ?, ?, ?)";
+        $insertQuery = "INSERT INTO `payroll` (`trackid`, `user_id`, `month`, `file`) VALUES (?, ?, ?, ?)";
         $stmt = $connect->prepare($insertQuery);
         $stmt->bind_param("s$paramString", $trackid, ...$params);
         $executed = $stmt->execute();

@@ -117,7 +117,7 @@
                             <div class="form-group">
                                 <label class="form-label" for="email-address">Review</label>
                                 <div class="form-control-wrap">
-                                    <textarea class="form-control" v-model="review" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" v-model="view" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
                             </div>
 

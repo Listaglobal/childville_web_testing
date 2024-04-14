@@ -24,9 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $user_id = $utility_class_call::escape($_POST['user_id']);
     }
 
-    $month = " ";
+    $month= " ";
     if (isset($_POST['month'])) {
-        $fname = $utility_class_call::escape($_POST['month']);
+        $month = $utility_class_call::escape($_POST['month']);
     }
 
     $file = " ";
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = [
         "user_id" => $user_id,
         "month" => $month,
-        "file" => $imageUploaded,
+        "file" => $imageUploaded['name'],
     ];
 
     $addPayroll = $payrollDBCall::addPayroll($data);
