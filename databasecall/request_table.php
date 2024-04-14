@@ -42,7 +42,6 @@ class Request_Table extends Config\DB_Connect
         // SELECT * FROM `payment` WHERE 1
 
         $query = "SELECT * FROM $tableName LEFT JOIN users ON $tableName.user_id = users.user_id WHERE $tableName.id > ? $sortQuery $searchQuery";
-        echo $query;
         $checkdata = $connect->prepare($query);
         $checkdata->bind_param("s$paramString", self::$minId, ...$params);
         $checkdata->execute();

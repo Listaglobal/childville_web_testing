@@ -1,7 +1,15 @@
 <?php
+
+use Firebase\JWT\JWT;
+
 require_once '../../../config/bootstrap_file.php';
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    // check Authorization
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // add try and catch
+    // Get the request body
+    $request_body = file_get_contents('php://input');
+    $data = json_decode($request_body);
+
     $decodedToken = $api_status_code_class_call->ValidateAPITokenSentIN();
     $admin_pubkey = $decodedToken->usertoken;
 
@@ -15,73 +23,64 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $linktosolve = "https://";
         $api_status_code_class_call->respondUnauthorized($maindata, $text, $hint, $linktosolve, $errorcode);
     }
-
-
-    //pass sort params
-    $params = [];
-    $status = 1;
-    $params[] = $status;
-    $paramString = "s";
-    $sortQuery = ' AND ' . $eventDBCall::tableName . '.status = ?';
-    $searchQuery = "";
-    $single_post = false;
-
-
-    // sort by status
-    if (isset($_GET['trackid'])) {
-        $single_post = true;
-        $status = $utility_class_call::escape($_GET['trackid']);
-        $sortQuery .= ' AND ' . $eventDBCall::tableName . '.trackid = ?';
-        $paramString .= "s";
-        $params[] = $status;
-    } else {
-        $single_post = false;
+    // Alldata sent in
+    $trackid = $status = "";
+    if (isset($data->trackid)) {
+        $trackid = $utility_class_call::escape($data->trackid);
+    }
+    //pass token
+    if (isset($data->status)) {
+        $status = $utility_class_call::escape($data->status);
     }
 
-    // Other sort parameters can be passed here
-    if (isset($_GET['search'])) {
-        $tableName = $discoDBCall::tableName;
-        $search = $utility_class_call::escape($_GET['search']);
-        if (!empty($search) && $search != '' && $search != " ") {
-            $searchValue = "%" . $search . "%";
-            $searchQuery = " AND ( $tableName.topic LIKE ? OR $tableName.venue LIKE ?)";
-            for ($i = 0; $i < 2; $i++) {
-                $params[] = $searchValue;
-                $paramString .= "s";
-            }
-        }
+    // Validate input
+    if ($utility_class_call::validate_input($trackid)) {
+        $text = $api_response_class_call::$invalidDataSent;
+        $errorcode = $api_error_code_class_call::$internalUserWarning;
+        $maindata = [];
+        $hint = ["Ensure to send valid data to the API fields."];
+        $linktosolve = "https://";
+        $api_status_code_class_call->respondBadRequest($maindata, $text, $hint, $linktosolve, $errorcode);
     }
 
-
-    if (!isset($_GET['page'])) {
-        $page_no = 1;
-    } else {
-        $page_no = $_GET['page'];
+    // 1=active, 0=ban
+    if ($status != 2 && $status != 3) {
+        $text = $api_response_class_call::$invalidStatus;
+        $errorcode = $api_error_code_class_call::$internalUserWarning;
+        $maindata = [];
+        $hint = ["Ensure to send valid data to the API fields.", "pass in valid status", "status 0, 1"];
+        $linktosolve = "https://";
+        $api_status_code_class_call->respondBadRequest($maindata, $text, $hint, $linktosolve, $errorcode);
     }
 
-    if (!isset($_GET['noPerPage'])) {
-        $noPerPage = 100;
-    } else {
-        $noPerPage = $_GET['noPerPage'];
+    // check if id sent is a valid admin
+    if (!$utility_class_call::checkIfExist("request", "trackid", $trackid)) {
+        $text = $api_response_class_call::$invalidTrackid;
+        $errorcode = $api_error_code_class_call::$internalUserWarning;
+        $maindata = [];
+        $hint = ["Ensure to pass data to all fields."];
+        $linktosolve = "https://";
+        $api_status_code_class_call->respondBadRequest($maindata, $text, $hint, $linktosolve, $errorcode);
     }
 
-    $offset = ($page_no - 1) * $noPerPage;
+    $updateStatus = $utility_class_call::changeStatus("request", $status, "trackid", $trackid);
 
-    $allEvents = $eventDBCall::getAllEvents($page_no, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params);
-
-    if ($allEvents) {
-        $maindata = $allEvents;
-        $text = $api_response_class_call::$getRequestFetched;
-        $api_status_code_class_call->respondOK($maindata, $text);
-    } else {
-
-        $maindata = null;
-        $text = $api_response_class_call::$getRequestNoRecords;
-        $api_status_code_class_call->respondOK($maindata, $text);
+    if (!$updateStatus) {
+        $text = $api_response_class_call::$dbUpdatingError;
+        $errorcode = $api_error_code_class_call::$internalUpdateDBFatal;
+        $maindata = [];
+        $hint = ["Ensure to send valid data to the API fields.", "Error updating manager status in database"];
+        $linktosolve = "https://";
+        $api_status_code_class_call->respondBadRequest($maindata, $text, $hint, $linktosolve, $errorcode);
     }
+
+    // Sendsuccess response
+    $maindata = [];
+    $text = $api_response_class_call::$statusChangedMessage;
+    $api_status_code_class_call->respondOK($maindata, $text);
 } else {
     $text = $api_response_class_call::$methodUsedNotAllowed;
-    $errorcode = $api_error_code_class_call::$internalUserWarning;
+    $errorcode = $api_error_code_class_call::$internalHackerWarning;
     $maindata = [];
     $hint = ["Ensure to use the method stated in the documentation."];
     $linktosolve = "https://";

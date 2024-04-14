@@ -19,8 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     //pass sort params
     $params = [];
-    $paramString = " ";
-    $sortQuery = ' ';
+    // $status = 1;
+    // $params[] = $status;
+    $paramString = "";
+    $sortQuery = "";
     $searchQuery = "";
     $single_post = false;
 
@@ -40,8 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET['search'])) {
         $tableName = $requestDBCall::tableName;
         $search = $utility_class_call::escape($_GET['search']);
-        if (!empty($search) && $search != '' && $search != " "
-        ) {
+        if (!empty($search) && $search != '' && $search != " ") {
             $searchValue = "%" . $search . "%";
             $searchQuery = " AND ( $tableName.name LIKE ?)";
             for ($i = 0; $i < 2; $i++) {
@@ -50,7 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             }
         }
     }
-
 
 
     if (!isset($_GET['page'])) {
@@ -67,10 +67,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     $offset = ($page_no - 1) * $noPerPage;
 
-    $allEvents = $requestDBCall::getAllRequest($page_no, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params);
+    $AllReview = $requestDBCall::getAllRequest($page_no, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params);
 
-    if ($allEvents) {
-        $maindata = $allEvents;
+    if ($AllReview) {
+        $maindata = $AllReview;
         $text = $api_response_class_call::$getRequestFetched;
         $api_status_code_class_call->respondOK($maindata, $text);
     } else {

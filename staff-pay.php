@@ -33,21 +33,23 @@
                                                         <th>User</th>
                                                         <th>Month</th>
                                                         <th>Date Sent</th>
+                                                        <th>File</th>
                                                         <th> </th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr v-for="() in payroll">
+                                                    <tr v-for="(item, index) in payroll">
                                                         <td class="py-1">
-                                                            <img src="asset/img/img4.jpg" alt="image" />
+                                                            <img v-if='item.profile_pic' :src="baseUrl +'/assets/images/staff/'+item.profile_pic" alt="Staff image" class="thumb __567788">
                                                             <div class="mt-3 text-align-center">
-                                                                <h6>{Brandon Washington}</h6>
+                                                                <h6>{{item.fname}} {{item.lname}}</h6>
                                                             </div>
                                                         </td>
-                                                        <td>May 15, 2015 </td>
-                                                        <td> John Smith </td>
+                                                        <td>{{item.month}}</td>
+                                                        <td>{{item.created_at}}</td>
+                                                        <th>{{item.file}}</td>
                                                         <td>
-                                                            <a href="#" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Download</a>
+                                                            <a :href="baseUrl +'/assets/images/payroll/'+item.file" target="_blank" class="btn btn-primary text-white me-0"><i class="icon-download"></i> Download</a>
                                                         </td>
                                                     </tr>
 

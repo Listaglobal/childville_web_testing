@@ -70,7 +70,7 @@ class PayRoll_Table extends Config\DB_Connect
 
         // SELECT * FROM `payroll` LEFT JOIN users ON payroll.user_id = users.user_id WHERE users.user_id = "CHILDVILLE6X8KC"
 
-        $query = "SELECT * FROM `payroll` LEFT JOIN users ON payroll.user_id = users.user_id WHERE users.id > ? $sortQuery $searchQuery";
+        $query = "SELECT * FROM $tableName LEFT JOIN users ON $tableName.user_id = users.user_id WHERE $tableName.id > ? $sortQuery $searchQuery";
         $checkdata = $connect->prepare($query);
         $checkdata->bind_param("s$paramString", self::$minId, ...$params);
         $checkdata->execute();

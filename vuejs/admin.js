@@ -1475,6 +1475,27 @@ let app = Vue.createApp({
             });
         },
 
+         async changeRequestStatus(id, status) {
+            let data = {
+                "trackid" : id,
+                "status" : status,
+            }
+
+            const headers = {
+                "Authorization": `Bearer ${this.token}`,
+                "Content-Type": "application/json"
+            };
+            
+            
+            const url = `request/changeRequestStatus.php`;
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getAllRequest();
+                } 
+            }, 2);
+
+        },
+
 
 
 

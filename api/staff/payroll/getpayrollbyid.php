@@ -39,6 +39,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $single_post = false;
     }
 
+    // Other sort parameters can be passed here
+    if (isset($_GET['search'])) {
+        $tableName = $payrollDBCall::tableName;
+        $search = $utility_class_call::escape($_GET['search']);
+        if (!empty($search) && $search != '' && $search != " ") {
+            $searchValue = "%" . $search . "%";
+            $searchQuery = " AND ( $tableName.topic LIKE ? OR $tableName.venue LIKE ?)";
+            for ($i = 0; $i < 2; $i++) {
+                $params[] = $searchValue;
+                $paramString .= "s";
+            }
+        }
+    }
+
 
     if (!isset($_GET['page'])) {
         $page_no = 1;
@@ -54,10 +68,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     $offset = ($page_no - 1) * $noPerPage;
 
-    $allPayRoll = $payrollDBCall::getAllPayRoll($userid,$page_no, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params);
+    $AllReview = $payrollDBCall::getAllPayroll($page_no, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params);
 
-    if ($allPayRoll) {
-        $maindata = $allPayRoll;
+    if ($AllReview) {
+        $maindata = $AllReview;
         $text = $api_response_class_call::$getRequestFetched;
         $api_status_code_class_call->respondOK($maindata, $text);
     } else {

@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // $params[] = $status;
     $params[] = $userid;
     $paramString = "s";
-    $sortQuery = ' AND ' . $payrollDBCall::tableName . '.user_id = ?';
+    $sortQuery = ' AND ' . $goalDBCall::tableName . '.user_id = ?';
     $searchQuery = "";
     $single_post = false;
 

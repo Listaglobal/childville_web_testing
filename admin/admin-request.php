@@ -53,37 +53,43 @@
                                                                     <th>Request Date</th>
                                                                     <th>Reason of Time Off</th>
                                                                     <th>Status</th>
+                                                                    <th>Actions</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
-                                                                <tr>
+                                                            <tbody v-if="request">
+                                                                <tr v-for="(item, index) in request">
                                                                     <td>
                                                                         <div class="d-flex ">
-                                                                            <img src="assets/images/faces/face1.jpg" alt="">
-                                                                            <div>
-                                                                                <h6>Brandon Washington</h6>
-                                                                                <p></p>
+                                                                            <img v-if='item.profile_pic' :src="baseUrl +'/assets/images/staff/'+item.profile_pic" alt="Staff image" class="thumb __567788">
+                                                                            <div class="text-align-center mt-2 p-2">
+                                                                                <h6>{{item.fname}} {{item.lname}}</h6>
                                                                             </div>
                                                                         </div>
                                                                     </td>
                                                                     <td>
-                                                                        <h6>Female</h6>
+                                                                        <h6>{{item.days}} Days</h6>
                                                                     </td>
                                                                     <td>
-                                                                        <h6>Female</h6>
+                                                                        <h6>{{item.created_at}}</h6>
                                                                     </td>
                                                                     <td>
-                                                                        <div>
-                                                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                                <p class="text-success">+23729474</p>
-                                                                            </div>
-                                                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                                <p>Washington James</p>
-                                                                            </div>
+                                                                        <h6>{{item.reason}}</h6>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div v-if="item.status === 1" class="badge badge-opacity-warning">Awaiting Approval</div>
+                                                                        <div v-if="item.status === 2" class="badge badge-opacity-success">Approved</div>
+                                                                        <div v-if="item.status === 3" class="badge badge-opacity-danger">Dissapproved</div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="dropdown d-inline-block">
+                                                                            <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                <i class="mdi mdi-account-eye"></i>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                                                <li v-if="item.status != 3"><span @click="changeRequestStatus(item.trackid, 2)" class="dropdown-item"><i class="ri-toggle-line align-bottom me-2 text-muted"></i> Disapprove</span></li>
+                                                                                <li v-if="item.status != 2"><span @click="changeRequestStatus(item.trackid, 3)" class="dropdown-item"><i class="ri-toggle-line align-bottom me-2 text-muted"></i> Approve</span></li>
+                                                                            </ul>
                                                                         </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="badge badge-opacity-success">Active</div>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
