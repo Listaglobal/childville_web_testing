@@ -76,9 +76,9 @@
                                                                         <h6>{{item.reason}}</h6>
                                                                     </td>
                                                                     <td>
-                                                                        <div v-if="item.status === 1" class="badge badge-opacity-warning">Awaiting Approval</div>
-                                                                        <div v-if="item.status === 2" class="badge badge-opacity-success">Approved</div>
-                                                                        <div v-if="item.status === 3" class="badge badge-opacity-danger">Dissapproved</div>
+                                                                        <div v-if="item.status == 1" class="badge badge-opacity-warning">Awaiting Approval</div>
+                                                                        <div v-if="item.status == 2" class="badge badge-opacity-success">Approved</div>
+                                                                        <div v-if="item.status == 3" class="badge badge-opacity-danger">Dissapproved</div>
                                                                     </td>
                                                                     <td>
                                                                         <div class="dropdown d-inline-block">
@@ -86,8 +86,8 @@
                                                                                 <i class="mdi mdi-account-eye"></i>
                                                                             </button>
                                                                             <ul class="dropdown-menu dropdown-menu-end">
-                                                                                <li v-if="item.status != 3"><span @click="changeRequestStatus(item.trackid, 2)" class="dropdown-item"><i class="ri-toggle-line align-bottom me-2 text-muted"></i> Disapprove</span></li>
-                                                                                <li v-if="item.status != 2"><span @click="changeRequestStatus(item.trackid, 3)" class="dropdown-item"><i class="ri-toggle-line align-bottom me-2 text-muted"></i> Approve</span></li>
+                                                                                <li v-if="item.status != 3"><span @click="changeRequestStatus(item.id, 3)" class="dropdown-item"><i class="ri-toggle-line align-bottom me-2 text-muted"></i> Disapprove</span></li>
+                                                                                <li v-if="item.status != 2"><span @click="changeRequestStatus(item.id, 2)" class="dropdown-item"><i class="ri-toggle-line align-bottom me-2 text-muted"></i> Approve</span></li>
                                                                             </ul>
                                                                         </div>
                                                                     </td>

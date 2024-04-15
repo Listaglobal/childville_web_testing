@@ -179,7 +179,7 @@ let app = Vue.createApp({
             view: null,
 
             //goal
-            goal: null,
+            yes: null,
 
             //request
             request: null,
@@ -194,7 +194,7 @@ let app = Vue.createApp({
         },
         logout() {
             window.localStorage.removeItem("token");
-            window.location = this.baseUrl + "/admin/admin-login.php";
+            window.location = this.baseUrl + "admin/admin-login.php";
         },
         async nextPage() {
             this.currentPage = parseInt(this.currentPage) + 1;
@@ -1431,7 +1431,7 @@ let app = Vue.createApp({
         async addGoal() {
             let data = {
                 "user_id" : this.user_id,
-                "goal" : this.goal
+                "goal" : this.yes
                           
             }
 
@@ -1445,7 +1445,7 @@ let app = Vue.createApp({
                 if (successStatus) {
                     await this.getAllGoal();
                     document.getElementById("_closedisco").click();
-                    this.user_id = this.goal  = null;
+                    this.user_id = this.yes  = null;
                 } 
             }, 2);
         },

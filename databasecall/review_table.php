@@ -67,7 +67,7 @@ class Review_Table extends Config\DB_Connect
 
         // SELECT * FROM `review` LEFT JOIN users ON review.user_id = users.user_id LEFT JOIN admin ON review.admin_id = admin.trackid 
 
-        $query = "SELECT * FROM $tableName LEFT JOIN users ON $tableName.user_id = users.user_id WHERE $tableName.id > ? $sortQuery $searchQuery";
+        $query = "SELECT $tableName.*, users.fname as fname, users.lname as lname, users.profile_pic as profile_pic FROM $tableName LEFT JOIN users ON $tableName.user_id = users.user_id WHERE $tableName.id > ? $sortQuery $searchQuery";
         $checkdata = $connect->prepare($query);
         $checkdata->bind_param("s$paramString", self::$minId, ...$params);
         $checkdata->execute();

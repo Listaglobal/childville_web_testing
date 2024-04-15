@@ -153,6 +153,63 @@
                 </div>
             </div>
         </div>
+        <!-- Add Staff Task  -->
+        <div class="modal fade " id="adddisco" style="padding-left: 0px;" aria-modal="true" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Staff Pay Roll</h5>
+                        <a href="#" class="close" id='_closedisco' data-bs-dismiss="modal" aria-label="Close"><i class="mdi mdi-close"></i></a>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+
+                            <div class="form-group">
+                                <label class="form-label" for="quantity-add">Staff Pdf</label>
+                                <div class="form-control-wrap">
+                                    <div class="form-file">
+                                        <input id="input_file__" type="file" accept="image/*" @change='uploadImage' class="form-file-input" id="customFile">
+                                        <label class="form-file-label" for="customFile">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="oneapp">Select PayRoll Month </label>
+                                <div class="form-control-wrap">
+                                    <select v-model="month" class="form-select" id="oneappcode" required>
+                                        <option value="null">Select Month</option>
+                                        <option value="January">January</option>
+                                        <option value="February">February</option>
+                                        <option value="March">March</option>
+                                        <option value="April">April</option>
+                                        <option value="May">May</option>
+                                        <option value="June">June</option>
+                                        <option value="July">July</option>
+                                        <option value="August">August</option>
+                                        <option value="September">September</option>
+                                        <option value="October">October</option>
+                                        <option value="November">November</option>
+                                        <option value="December">December</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="oneapp">Select Staff </label>
+                                <div v-if="staff" class="form-control-wrap">
+                                    <select v-model="user_id" class="form-select" id="oneappcode" required>
+                                        <option value="null">Select Staff</option>
+                                        <option v-for="(item, index) in staff" :value="item.user_id">{{item.fname}} {{item.lname}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group"><button type="submit" @click.prevent="addPayroll()" class="btn btn-lg btn-primary">Send Staff PayRoll</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <?php include 'includes/admin-footer.php' ?>

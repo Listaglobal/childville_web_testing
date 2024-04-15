@@ -136,6 +136,7 @@
                                 <label class="form-label" for="shortname">Staff Date Of Birth</label>
                                 <div class="form-control-wrap">
                                     <input type="text" v-model="dob" class="form-control" id="shortname" required="">
+                                    
                                 </div>
                             </div>
                             <div class="form-group">

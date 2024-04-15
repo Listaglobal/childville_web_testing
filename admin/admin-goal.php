@@ -123,7 +123,7 @@
                             <div class="form-group">
                                 <label class="form-label" for="email-address">Goal </label>
                                 <div class="form-control-wrap">
-                                    <textarea class="form-control" v-model="goal" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" v-model="yes" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
                             </div>
 
