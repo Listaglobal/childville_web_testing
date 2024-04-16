@@ -31,7 +31,7 @@ class Task_Table extends Config\DB_Connect
     private static $minId = 0;
     // public static $imagePath = "payroll/";
 
-    public static function getAllRequest($page, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params)
+    public static function getAllTask($page, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params)
     {
         //input type checks if its from post request or just normal function call
         $connect = static::getDB();
@@ -41,7 +41,7 @@ class Task_Table extends Config\DB_Connect
 
         // SELECT * FROM `payment` WHERE 1
 
-        $query = "SELECT $tableName.*, users.fname as fname, users.lname as lname, users.profile_pic as profile_pic FROM $tableName LEFT JOIN users ON $tableName.user_id = users.user_id WHERE $tableName.id > ? $sortQuery $searchQuery";
+        $query = "SELECT $tableName.*, users.fname as fname, users.lname as lname, users.profile_pic as profile_pic  FROM $tableName LEFT JOIN users ON $tableName.user_id = users.user_id WHERE $tableName.id > ? $sortQuery $searchQuery";
         $checkdata = $connect->prepare($query);
         $checkdata->bind_param("s$paramString", self::$minId, ...$params);
         $checkdata->execute();
@@ -82,7 +82,7 @@ class Task_Table extends Config\DB_Connect
                 'per_page' => $noPerPage,
                 'total_data' => $total_numRow,
                 'totalPage' => $total_pages,
-                'request' => $alldata
+                'task' => $alldata
             ];
 
             return $results;
@@ -91,10 +91,10 @@ class Task_Table extends Config\DB_Connect
         return false;
     }
 
-    public static function addRequest($data)
+    public static function addTask($data)
     {
         $connect = static::getDB();
-        $trackid =  Utility_Functions::generateUniqueShortKey("request", "trackid");
+        $trackid =  Utility_Functions::generateUniqueShortKey("task", "trackid");
         $status = 1;
 
         $params = [];
@@ -104,7 +104,7 @@ class Task_Table extends Config\DB_Connect
             $paramString .= "s";
         }
 
-        $query = "INSERT INTO `request`(`trackid`, `status`, `user_id`, `reason`, `days` ) VALUES (?, ?, ?, ?, ?)";
+        $query = "INSERT INTO `task`(`trackid`, `status`, `user_id`, `task` ) VALUES (?, ?, ?, ?)";
         $stmt = $connect->prepare($query);
         $stmt->bind_param("ss$paramString", $trackid, $status, ...$params);
         $executed = $stmt->execute();

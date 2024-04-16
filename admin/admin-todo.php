@@ -57,83 +57,21 @@
                                                                     <th>Status</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
-                                                                <tr>
+                                                            <tbody v-if="task">
+                                                                <tr v-for="(item, index) in task">
                                                                     <td>
                                                                         <div class="d-flex ">
-                                                                            <img src="assets/images/faces/face1.jpg" alt="">
-                                                                            <div>
-                                                                                <h6>Brandon Washington</h6>
-                                                                                <p></p>
+                                                                            <img v-if='item.profile_pic' :src="baseUrl +'/assets/images/staff/'+item.profile_pic" alt="Staff image" class="thumb __567788">
+                                                                            <div class="text-align-center mt-2 p-2">
+                                                                                <h6>{{item.fname}} {{item.lname}}</h6>
                                                                             </div>
                                                                         </div>
                                                                     </td>
                                                                     <td>
-                                                                        <h6>Female</h6>
+                                                                        <h6>{{item.created_at}}</h6>
                                                                     </td>
                                                                     <td>
-                                                                        <div>
-                                                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                                <p class="text-success">+23729474</p>
-                                                                            </div>
-                                                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                                <p>Washington James</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="badge badge-opacity-success">Active</div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="d-flex ">
-                                                                            <img src="assets/images/faces/face1.jpg" alt="">
-                                                                            <div>
-                                                                                <h6>Brandon Washington</h6>
-                                                                                <p></p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <h6>Female</h6>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div>
-                                                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                                <p class="text-success">+23729474</p>
-                                                                            </div>
-                                                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                                <p>Washington James</p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="badge badge-opacity-success">Active</div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="d-flex ">
-                                                                            <img src="assets/images/faces/face1.jpg" alt="">
-                                                                            <div>
-                                                                                <h6>Brandon Washington</h6>
-                                                                                <p></p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <h6>Female</h6>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div>
-                                                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                                <p class="text-success">+23729474</p>
-                                                                            </div>
-                                                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                                <p>Washington James</p>
-                                                                            </div>
-                                                                        </div>
+                                                                        <h6>{{item.task}}</h6>
                                                                     </td>
                                                                     <td>
                                                                         <div class="badge badge-opacity-success">Active</div>
@@ -153,48 +91,16 @@
                 </div>
             </div>
         </div>
-        <!-- Add Staff Task  -->
+
         <div class="modal fade " id="adddisco" style="padding-left: 0px;" aria-modal="true" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Add Staff Pay Roll</h5>
+                        <h5 class="modal-title">Staff Task</h5>
                         <a href="#" class="close" id='_closedisco' data-bs-dismiss="modal" aria-label="Close"><i class="mdi mdi-close"></i></a>
                     </div>
                     <div class="modal-body">
                         <form>
-
-                            <div class="form-group">
-                                <label class="form-label" for="quantity-add">Staff Pdf</label>
-                                <div class="form-control-wrap">
-                                    <div class="form-file">
-                                        <input id="input_file__" type="file" accept="image/*" @change='uploadImage' class="form-file-input" id="customFile">
-                                        <label class="form-file-label" for="customFile">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label" for="oneapp">Select PayRoll Month </label>
-                                <div class="form-control-wrap">
-                                    <select v-model="month" class="form-select" id="oneappcode" required>
-                                        <option value="null">Select Month</option>
-                                        <option value="January">January</option>
-                                        <option value="February">February</option>
-                                        <option value="March">March</option>
-                                        <option value="April">April</option>
-                                        <option value="May">May</option>
-                                        <option value="June">June</option>
-                                        <option value="July">July</option>
-                                        <option value="August">August</option>
-                                        <option value="September">September</option>
-                                        <option value="October">October</option>
-                                        <option value="November">November</option>
-                                        <option value="December">December</option>
-                                    </select>
-                                </div>
-                            </div>
-
                             <div class="form-group">
                                 <label class="form-label" for="oneapp">Select Staff </label>
                                 <div v-if="staff" class="form-control-wrap">
@@ -204,7 +110,17 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group"><button type="submit" @click.prevent="addPayroll()" class="btn btn-lg btn-primary">Send Staff PayRoll</button></div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="email-address">Goal </label>
+                                <div class="form-control-wrap">
+                                    <textarea class="form-control" v-model="yeses" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" @click.prevent="addTask()" class="btn btn-lg btn-primary">Add Staff Task</button>
+                            </div>
                         </form>
                     </div>
                 </div>

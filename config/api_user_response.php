@@ -149,5 +149,8 @@ class API_User_Response
     public static $invalidStatus = "Pass A Valid Status";
     public static $statusChangedMessage = "Request Status Changed";
     public static $sameDataPassed = "Same Data Passed";
+
+    //goal 
+    public static $staffTask = "Staff Task Added Created";
     
 }
