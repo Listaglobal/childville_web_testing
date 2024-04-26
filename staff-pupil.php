@@ -141,7 +141,7 @@
                             <div class="form-group">
                                 <label class="form-label" for="text">Pupils Date of Birth</label>
                                 <div class="form-control-wrap">
-                                    <input type="text" v-model="dob" class="form-control" required="">
+                                    <input type="date" v-model="dob" class="form-control" required="">
                                 </div>
                             </div>
                             <div class="form-group">

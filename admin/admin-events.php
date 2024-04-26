@@ -130,7 +130,7 @@
                             <div class="form-group">
                                 <label class="form-label" for="email-address">event Date</label>
                                 <div class="form-control-wrap">
-                                    <input type="text" v-model="date" class="form-control" id="email-address" required="">
+                                    <input type="datetime-local" v-model="date" class="form-control" id="email-address" required="">
                                 </div>
                             </div>
                             <div class="form-group">
