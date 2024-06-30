@@ -49,13 +49,13 @@
                     <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <img class="img-fluid w-75 rounded-circle bg-light p-3" src="asset/img/about-1.jpg" alt="">
+                                <img class="img-fluid w-75 rounded-circle bg-light p-3" src="asset/img/child21.jpg" alt="">
                             </div>
                             <div class="col-6 text-start" style="margin-top: -150px;">
-                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="asset/img/about-2.jpg" alt="">
+                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="asset/img/child20.jpg" alt="">
                             </div>
                             <div class="col-6 text-end" style="margin-top: -150px;">
-                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="asset/img/about-3.jpg" alt="">
+                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="asset/img/child19.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -71,13 +71,13 @@
                     <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <img class="img-fluid w-75 rounded-circle bg-light p-3" src="asset/img/about-1.jpg" alt="">
+                                <img class="img-fluid w-75 rounded-circle bg-light p-3" src="asset/img/child15.jpg" alt="">
                             </div>
                             <div class="col-6 text-start" style="margin-top: -150px;">
-                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="asset/img/about-2.jpg" alt="">
+                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="asset/img/child14.jpg" alt="">
                             </div>
                             <div class="col-6 text-end" style="margin-top: -150px;">
-                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="asset/img/about-3.jpg" alt="">
+                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="asset/img/child11.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -89,7 +89,8 @@
                             and education for children.
                             We to provide a quality, safe and secure pre-school, breakfast and after school centres for
                             children aged 2 to 12 year
-                            olds.</p>
+                            olds.
+                        </p>
                         <p class="mb-4">Our centres are truly inclusive establishment with our ethos being centred on
                             mutual respect and moral development. Our
                             staff team hold the firm belief that every child is an individual and as such has the right
@@ -98,7 +99,8 @@
                             child will begin their
                             education in a nurturing environment which enables them to explore the ever changing world
                             in a safe and sensible
-                            manner.</p>
+                            manner.
+                        </p>
                     </div>
                 </div>
             </div>

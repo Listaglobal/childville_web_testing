@@ -29,33 +29,33 @@
                 <div class="row g-4">
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item position-relative">
-                            <img class="img-fluid rounded-circle w-70" src="asset/img/img1.jpg" alt="">
+                            <img class="img-fluid rounded-circle w-70" src="asset/img/child1.jpg" alt="">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item position-relative">
-                            <img class="img-fluid rounded-circle w-70" src="asset/img/img7.jpg" alt="">
+                            <img class="img-fluid rounded-circle w-70" src="asset/img/child2.jpg" alt="">
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item position-relative">
-                            <img class="img-fluid rounded-circle w-70" src="asset/img/img3.jpg" alt="">
+                            <img class="img-fluid rounded-circle w-70" src="asset/img/child3.jpg" alt="">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item position-relative">
-                            <img class="img-fluid rounded-circle w-70" src="asset/img/img4.jpg" alt="">
+                            <img class="img-fluid rounded-circle w-70" src="asset/img/child4.jpg" alt="">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item position-relative">
-                            <img class="img-fluid rounded-circle w-70" src="asset/img/img5.jpg" alt="">
+                            <img class="img-fluid rounded-circle w-70" src="asset/img/child5.jpg" alt="">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item position-relative">
-                            <img class="img-fluid rounded-circle w-70" src="asset/img/img6.jpg" alt="">
+                            <img class="img-fluid rounded-circle w-70" src="asset/img/child6.jpg" alt="">
                         </div>
                     </div>
                 </div>

@@ -4,12 +4,12 @@
 <head>
     <?php include 'includes/staff-header-link.php' ?>
 </head>
+
 <style>
     [v-cloak] {
         display: none;
     }
 </style>
-
 
 <body id="staff" v-cloak class="with-welcome-text">
     <div class="container-scroller">

@@ -37,7 +37,7 @@
                     <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <img class="img-fluid w-50 rounded-circle bg-light p-3" src="asset/img/about-1.jpg" alt="">
+                                <img class="img-fluid w-50 rounded-circle bg-light p-3" src="asset/img/child12.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                     <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <img class="img-fluid w-50 rounded-circle bg-light p-3" src="asset/img/about-1.jpg" alt="">
+                                <img class="img-fluid w-50 rounded-circle bg-light p-3" src="asset/img/child13.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                     <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <img class="img-fluid w-50 rounded-circle bg-light p-3" src="asset/img/about-1.jpg" alt="">
+                                <img class="img-fluid w-50 rounded-circle bg-light p-3" src="asset/img/child14.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                     <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <img class="img-fluid w-50 rounded-circle bg-light p-3" src="asset/img/about-1.jpg" alt="">
+                                <img class="img-fluid w-50 rounded-circle bg-light p-3" src="asset/img/child15.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                     <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <img class="img-fluid w-50 rounded-circle bg-light p-3" src="asset/img/about-1.jpg" alt="">
+                                <img class="img-fluid w-50 rounded-circle bg-light p-3" src="asset/img/child16.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                     <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <img class="img-fluid w-50 rounded-circle bg-light p-3" src="asset/img/about-1.jpg" alt="">
+                                <img class="img-fluid w-50 rounded-circle bg-light p-3" src="asset/img/child17.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -133,13 +133,29 @@
                     <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <img class="img-fluid w-50 rounded-circle bg-light p-3" src="asset/img/about-1.jpg" alt="">
+                                <img class="img-fluid w-50 rounded-circle bg-light p-3" src="asset/img/child18.jpg" alt="">
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="row g-5 align-items-center mt-2">
+                    <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <img class="img-fluid w-50 rounded-circle bg-light p-3" src="asset/img/child19.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <h1 class="mb-2">Childville at Thamesview Community Centre</h1>
+                        <h5> Bastable Avenue </h5>
+                        <h5>Post Code : IG11 0LG</h5>
+                        <h5>Phone Number : +44 7760 220367</h5>
+                        <h5>Opening Time : Monday -Wednesday 9:00am - 2pm</h5>
+                        <h5>Email: Thamesview@childvillecentre.com</h5>
+                    </div>
+                </div>
             </div>
-
         </div>
         <!-- Branhes End -->
 
