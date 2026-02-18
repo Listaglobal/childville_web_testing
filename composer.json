@@ -2,7 +2,7 @@
     "name": "childville_web/chilville-code",
     "description": "Code standard template",
     "require": {
-        "firebase/php-jwt": "^6.4",
+        "firebase/php-jwt": "^7.0",
         "phpmailer/phpmailer": "^6.7",
         "sendgrid/sendgrid": "~7"
     },
